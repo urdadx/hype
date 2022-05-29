@@ -3,22 +3,23 @@ import bcrypt from 'bcryptjs';
 
 
 // Create Link Schema
-const LinkSchema = new mongoose.Schema({
+const LinkSchema = new mongoose.Schema(
+  {
     url: {
       type: String,
       required: true
     },
-    linkTitle: {
+    title: {
       type: String,
       required: true
     },
-    image:{
+    icon:{
         type:String,
         default:""
     }
 });
 
-const userSchema = mongoose.Schema(
+const userSchema = new mongoose.Schema(
   {
    
     username: {
@@ -44,7 +45,12 @@ const userSchema = mongoose.Schema(
       default: false,
     },
     links:{
-        type: [LinkSchema]
+        type: [LinkSchema],
+        default:[]
+    },
+    theme:{
+      type:String,
+      default:""
     }
   },
   {
@@ -66,6 +72,5 @@ userSchema.pre('save', async function (next) {
 })
 
 const User = mongoose.model('User', userSchema)
-export const Link = mongoose.model("Link", LinkSchema)
 
 export default User;

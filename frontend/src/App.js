@@ -1,8 +1,14 @@
+import Admin from "./components/Admin";
+import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <div className="App">
-       yoo welcome to hype
+      <Router>
+         <Routes>
+            <Route path="/admin" element={<Admin />} />
+         </Routes>
+      </Router>
     </div>
   );
 }

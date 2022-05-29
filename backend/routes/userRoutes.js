@@ -22,7 +22,7 @@ const multer = Multer({
 });
 
 
-router.route('/signup').post(registerUser).get(protect, admin, getUsers)
+router.route('/signup', registerUser).post(registerUser).get(protect, admin, getUsers)
 router.post('/login', authUser)
 router.patch('/upload/profile', multer.single("file"),protect, uploadProfile)
 router
