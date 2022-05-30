@@ -13,6 +13,7 @@ export const NavbarStyled = styled.section`
     border-bottom: 1px solid rgb(218, 222, 224);
     transition: color 0.2s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
     font-family: "Inter", sans-serif;
+    position: sticky;
 
     div{
         padding-top:25px;
@@ -45,6 +46,7 @@ export const Dropdown = styled.section`
     border-bottom: 1px solid rgb(218, 222, 224);
     transition: color 0.2s cubic-bezier(0.08, 0.59, 0.29, 0.99) 0s;
     font-family: "Inter", sans-serif;
+    position: sticky;
 
     div{
         padding-top:5px;

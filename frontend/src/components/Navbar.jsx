@@ -26,7 +26,9 @@ const Navbar = () => {
         <Dropdown>
             <div>Analytics</div>
             <div>
-                <ion-icon name="caret-down-outline"></ion-icon>
+                <Link to="#">
+                    <ion-icon name="caret-down-outline"></ion-icon>
+                </Link>
             </div>
         </Dropdown>
        

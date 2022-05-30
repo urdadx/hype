@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const WorkSpaceStyled = styled.section`
     background-color: #F5F6F8;
-    height:100%;
+    height:100vh;
     overflow-y: scroll;
 `
 export const Button = styled.button`
@@ -19,7 +19,7 @@ export const Button = styled.button`
     height: 48px;
     font-weight: 600;
     font-size: 16px;
-    width:240px;
+    width:320px;
     max-width: 100%;
     box-sizing: inherit;
     color: rgb(255, 255, 255);
@@ -40,10 +40,171 @@ export const ButtonGrid = styled.div`
   
 `
 
-export const Card = styled.div`
-    flex: 1 1 0%;
-    padding: 16px;
-    height: 100%;
-    position: relative;
+export const CardStyled = styled.section`
+    display: flex;
+    padding:7px 15px;
+    align-items: center;
+    font-family: "Inter",sans-serif; 
+    
+    
+
+    .card_wrapper{
+        display: grid; 
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        gap: 0px;
+        height: 130px;
+        width:640px;
+        background-color: #fff;
+        margin-left: 5px;
+        box-shadow:  0 2px 8px rgb(0 0 0 / 16%);
+        border-radius: 4px;
+        margin-top:2px;
+    }
+    
+
+    .draggable{
+        align-items: center;
+        -webkit-box-pack: center;
+        justify-content: center;
+        border-right: 1px solid rgb(215, 220, 225);
+        border-top-color: rgb(215, 220, 225);
+        border-bottom-color: rgb(215, 220, 225);
+        border-left-color: rgb(215, 220, 225);
+        width: 27px;
+        height: 130px;
+    }
+
+
+    ion-icon {
+        font-size: 22px;
+        margin-top:55px;
+        margin-left:3.5px;
+        color:grey;
+    }
+
+    .content{
+        padding:25px;
+        height:100%;
+    }
+
+    .title{
+        font-weight: bold;
+    }
+
+    input[type="text"]{
+        padding: 0px;
+        border: none;
+        font-family: "Inter",sans-serif;
+        cursor: inherit;
+        display: block;
+        background: none;
+        box-sizing: border-box;
+        color: rgb(61, 68, 75);
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: normal;
+        width:600px;
+
+    }
+    input[type="text"]:focus{
+        outline:none;
+        border:none;
+
+    }
+
+    .title_wrapper{
+        display: flex;
+        width:30px;
+    }
+
+    .extras{
+        width: 100px;
+        display: flex;
+        align-items:center;
+    }
+
+    .edit{
+        margin-left:20px;
+    }
+   
+`
+
+export const Flex = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:560px;
+`
+
+
+export const ModalStyled = styled.section`
+
+    .header{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgb(215, 220, 225);
+        padding:1px;
+        align-items: center;
+    }
+
+    .header_title{
+        font-weight:600;
+        font-size: 20px;
+        font-family: "Inter", sans-serif;
+        text-align: center;
+        color: #0a0b0d;
+    }
+
+    .header_title_wrapper{
+        width:450px;
+        margin:auto;
+        padding:0px;
+    }
+
+    .close-btn{
+        text-decoration: none;
+        color:grey;
+    }
+
+    .socials{
+        width:100%;
+        display: grid; 
+        grid-template-rows: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        padding:5px 20px;
+        
+    }
+
+    .socials > .div{
+        width: 90%;
+        height: 80px;
+        padding-top: 25px;
+        padding-bottom: 10px;
+        background-color: rgb(245, 246, 248);
+        border-radius: 24px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        color:black;
+        text-decoration: none;
+    }
+
+    img{
+        width:60px;
+        height:60px;
+        margin:auto;
+    }
+
+    p{
+        text-align: center;
+        padding:2px;    
+    }
+
+    .rec{
+        text-align: initial;
+        padding-left:25px;
+        font-weight: 500;
+    }
 
 `

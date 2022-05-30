@@ -2,14 +2,17 @@ import SpeechBubble from "../assets/speech-bubble.png";
 import BellIcon from "../assets/bell.png"
 import Profile from "../assets/default.png"
 import { SidebarStyled } from "../styles/Sidebar.Styled";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
     return ( 
         <>
         <SidebarStyled>
-            <div className="logo">
-                <img alt="logo" src="https://img.icons8.com/color/32/000000/linktree.png"/>
-            </div>
+            <Link to="/">
+                <div className="logo">
+                    <img alt="logo" src="https://img.icons8.com/color/32/000000/linktree.png"/>
+                </div>
+            </Link>
             <div className="icons_wrapper">
                 <div className="icons">
                     <span>
