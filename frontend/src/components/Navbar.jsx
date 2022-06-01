@@ -4,7 +4,6 @@ import { createLink  } from "../actions/postActions";
 import { useSelector,useDispatch } from "react-redux";
 import { toast } from 'react-toastify';
 import { useState } from "react";
-import { queryAllLinks } from "../actions/postActions";
 
 const Navbar = () => {
 
@@ -17,7 +16,6 @@ const Navbar = () => {
     const { userInfo } = userLogin
 
     const dispatch = useDispatch()
-
     
     const handleSubmit = (e) => { 
         e.preventDefault()
@@ -37,6 +35,7 @@ const Navbar = () => {
                 console.log(title, url)
                 setIsPosting(true)
                 if(setIsPosting){
+                    
                     setIsPosted(false)
                 }
                 setIsPosted(true)
@@ -48,8 +47,11 @@ const Navbar = () => {
                     autoClose:2000,
                     theme: "colored"
                 });  
-                dispatch(queryAllLinks())
-                
+                setTimeout(() => {
+                    window.location.reload();
+                },2000)  
+              
+
             }
             catch(error){
                   // Show user notification   

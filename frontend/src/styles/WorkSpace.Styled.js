@@ -205,7 +205,7 @@ export const ModalStyled = styled.section`
         flex-direction: column;
         color:black;
         text-decoration: none;
-        margin-top:40px;
+        margin-top:20px;
     }
 
     img{
@@ -222,6 +222,7 @@ export const ModalStyled = styled.section`
     .rec{
         text-align: initial;
         padding-left:25px;
+        margin-bottom: 0px;
         font-weight: 500;
     }
 

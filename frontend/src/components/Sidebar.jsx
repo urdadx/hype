@@ -1,5 +1,4 @@
 import SpeechBubble from "../assets/images/speech-bubble.png";
-import BellIcon from "../assets/images/bell.png"
 import Profile from "../assets/images/default.png"
 import { SidebarStyled } from "../styles/Sidebar.Styled";
 import { Link } from "react-router-dom";
@@ -30,7 +29,7 @@ const Sidebar = () => {
 
                     <span>
                         <Link onClick={userLogout}  to="#">
-                            <img className="icon" src="https://img.icons8.com/ios/20/undefined/exit.png"/>
+                            <img alt="logout" className="icon" src="https://img.icons8.com/ios/20/undefined/exit.png"/>
                         </Link>
                         
                     </span>

@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import ModalComp from "./ModalComp";
 import { useSelector, useDispatch } from "react-redux"
 import { queryAllLinks } from "../actions/postActions";
-import { Link } from "react-router-dom";
 
 const WorkSpace = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -16,7 +15,7 @@ const WorkSpace = () => {
 
     console.log(links)
 
-    useEffect(()=> {
+    useEffect(() => {
         dispatch(queryAllLinks())
     },[])
 
@@ -66,10 +65,13 @@ const WorkSpace = () => {
                          <ModalComp  close = {closeModal} />
                     </Modal>
                     {
-                      !loading && links.map((link) => {
+                      !loading ? links.map((link) => {
                           return <Card link = {link} key={link._id} /> 
-                        
                       })
+                      :
+                        <div className="no-links">
+                            Loading...
+                        </div>
                     }
 
                     {
@@ -77,6 +79,13 @@ const WorkSpace = () => {
                       <div className="no-links">
                          <p>You have no Links yet 😔</p>
                       </div>
+                    }
+
+                    {
+                      error &&
+                      <div className="no-links">
+                        <p>There was an error 😔</p>
+                    </div>
                     }
                    
           
