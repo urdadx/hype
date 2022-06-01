@@ -30,6 +30,7 @@
     "mongoose": "^6.3.4",
     "multer": "^1.4.4",
     "path": "^0.12.7",
+    "react-beautiful-dnd": "^13.1.0",
     "react-fa-icon-picker": "^1.0.3",
     "react-toggle": "^4.1.2"
   },

@@ -1,6 +1,5 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js';
-import uploadImageToStorage from '../utils/fileUpload.js'
 
 const ALL_ICONS_FOLDER = "hype/icons/"
 
@@ -14,28 +13,13 @@ const createLink = asyncHandler(async (req, res) => {
         throw new Error("User not found");
     }
 
+
     try{
 
         let newLink  = {
             title,
             url
         }
-    if(req.files){
-
-        uploadImageToStorage(file, ALL_ICONS_FOLDER)
-        .then((url) => {
-        newLink = {
-            ...newLink,
-            icon: url,
-        }
-         
-        })
-        .catch((error) => {
-          return res.status(500).send({
-            error: error
-          });
-        });
-    }
 
         newLink = user.links.push(newLink);
         user.save();
@@ -48,10 +32,29 @@ const createLink = asyncHandler(async (req, res) => {
     
 })
 
+const userLinks = asyncHandler(async(req,res)=>{
+    const user = await User.findById(req.user._id);
+
+    if(!user){
+        res.status(400)
+        throw new Error("User not found");
+    }
+
+    await User.findById(req.user._id)
+    .sort({ date: -1 })
+    .select("links")
+    .exec()
+    .then(links => {
+        res.json({ links })
+    })
+    .catch(err => console.log(err));
+})
+
 
 
 
 
 export{
-    createLink
+    createLink,
+    userLinks
 }

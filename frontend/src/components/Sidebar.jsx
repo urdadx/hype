@@ -1,10 +1,19 @@
-import SpeechBubble from "../assets/speech-bubble.png";
-import BellIcon from "../assets/bell.png"
-import Profile from "../assets/default.png"
+import SpeechBubble from "../assets/images/speech-bubble.png";
+import BellIcon from "../assets/images/bell.png"
+import Profile from "../assets/images/default.png"
 import { SidebarStyled } from "../styles/Sidebar.Styled";
 import { Link } from "react-router-dom";
+import { logout } from "../actions/userActions";
+import { useDispatch } from "react-redux"
+
 
 const Sidebar = () => {
+
+    const dispatch = useDispatch()
+
+    const userLogout = () =>{
+        dispatch(logout())
+    }
     return ( 
         <>
         <SidebarStyled>
@@ -20,7 +29,10 @@ const Sidebar = () => {
                     </span>
 
                     <span>
-                        <img alt="notifications" className="icon" src={BellIcon} />
+                        <Link onClick={userLogout}  to="#">
+                            <img className="icon" src="https://img.icons8.com/ios/20/undefined/exit.png"/>
+                        </Link>
+                        
                     </span>
                 </div>
               

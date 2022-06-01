@@ -3,13 +3,15 @@ import { Icon } from '@iconify/react';
 import { Link } from "react-router-dom";
 import Toggle from 'react-toggle'
 import { ToggleStyled } from "../styles/Toggle.Styled";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
-const Card = () => {
-
+const Card = ({ link }) => {
 
     return (
         <>
+                <ToastContainer />
             <CardStyled>
                 <div className="card_wrapper">
                     <div className="draggable">
@@ -20,10 +22,9 @@ const Card = () => {
                     <div className="content">
                         <Flex>
                             <div className="title_wrapper">
-                                <input className="title" type="text" autoFocus placeholder="title"/>
-                              
+                               <span className="span-title" >{link.title}</span>
                             </div>
-                            <label>
+                            <label> 
                                 <ToggleStyled>
 
                                 <Toggle
@@ -35,23 +36,18 @@ const Card = () => {
                         </Flex>
                         <Flex>
                             <div className="title_wrapper" style={{marginTop:"10px"}}>
-                                <input type="text" placeholder="Url"/>
+                               <Link target="_blank" to={`/${link.url}`}>{link.url}</Link>
                             
                             </div>
 
                         </Flex> 
                         <Flex>
                             <div style={{marginTop:"12px"}} className="extras">
-                                <Link to="#">
-                                    <Icon icon="bi:image" color="gray" width="18" height="18" inline={true} />
-                                </Link>
-                                <Link className="edit" to="#">
-                                    <Icon icon="jam:pencil-f" color="gray" width="18" height="18" inline={true} />
-                                </Link>
-
                             </div>
                             <div>
-                                <Icon icon="bytesize:trash" color="gray" width="18" height="18" inline={true} />
+                                <Link to="#">
+                                    <Icon icon="bytesize:trash" color="gray" width="18" height="18" inline={true} />
+                                </Link>
                             </div>
 
                         </Flex>
@@ -60,6 +56,6 @@ const Card = () => {
             </CardStyled>
         </>
       );
-}
+}   
  
 export default Card;

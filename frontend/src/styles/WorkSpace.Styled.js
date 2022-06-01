@@ -5,7 +5,16 @@ export const WorkSpaceStyled = styled.section`
     background-color: #F5F6F8;
     height:100vh;
     overflow-y: scroll;
+
+    .no-links{
+        display: flex;
+        justify-content: center;
+        margin-top: 5rem;
+        font-family: "Inter",sans-serif;
+        font-size: 19px;
+    }
 `
+
 export const Button = styled.button`
   
     padding: 0px;
@@ -19,11 +28,11 @@ export const Button = styled.button`
     height: 48px;
     font-weight: 600;
     font-size: 16px;
-    width:320px;
+    width:${({ width }) => width || '320px'};
     max-width: 100%;
     box-sizing: inherit;
     color: rgb(255, 255, 255);
-    background-color: rgb(124, 65, 255);
+    background:${({ background }) => background || 'rgb(124, 65, 255)'}; ;
     
     &:hover{
         background-color:rgb(128, 133, 237);
@@ -34,7 +43,7 @@ export const Button = styled.button`
 export const ButtonGrid = styled.div`
 
     display: flex;
-    padding:45px 25px;
+    padding:25px 25px;
     align-items: center;
     font-family: "Inter",sans-serif; 
   
@@ -46,8 +55,6 @@ export const CardStyled = styled.section`
     align-items: center;
     font-family: "Inter",sans-serif; 
     
-    
-
     .card_wrapper{
         display: grid; 
         grid-template-rows: 1fr 1fr 1fr;
@@ -59,7 +66,7 @@ export const CardStyled = styled.section`
         margin-left: 5px;
         box-shadow:  0 2px 8px rgb(0 0 0 / 16%);
         border-radius: 4px;
-        margin-top:2px;
+        margin-top:px;
     }
     
 
@@ -92,7 +99,7 @@ export const CardStyled = styled.section`
         font-weight: bold;
     }
 
-    input[type="text"]{
+    input[type="text"], input[type="url"]{
         padding: 0px;
         border: none;
         font-family: "Inter",sans-serif;
@@ -104,18 +111,26 @@ export const CardStyled = styled.section`
         font-size: 14px;
         line-height: 20px;
         letter-spacing: normal;
-        width:600px;
+        width:620px;
+        background-color: #fff;
 
     }
-    input[type="text"]:focus{
+    input[type="text"], input[type="url"]:focus{
         outline:none;
         border:none;
+        background-color: #fff;
+
 
     }
 
     .title_wrapper{
         display: flex;
         width:30px;
+
+    }
+
+    .span-title{
+        text-transform: capitalize;
     }
 
     .extras{
@@ -135,6 +150,8 @@ export const Flex = styled.div`
     justify-content: space-between;
     align-items: center;
     width:560px;
+
+    
 `
 
 
@@ -188,6 +205,7 @@ export const ModalStyled = styled.section`
         flex-direction: column;
         color:black;
         text-decoration: none;
+        margin-top:40px;
     }
 
     img{

@@ -4,7 +4,7 @@ import Multer from 'multer'
 
 const router = express.Router()
 
-import { createLink } from "../controllers/linkController.js";
+import { createLink, userLinks } from "../controllers/linkController.js";
 
 
 const multer = Multer({
@@ -17,6 +17,7 @@ const multer = Multer({
 
 
 router.post('/new', protect, createLink)
-// router.patch("/icon/upload",  multer.single("file"),protect, uploadIcon)
+router.get('/all', protect, userLinks)
+
 
 export default router
