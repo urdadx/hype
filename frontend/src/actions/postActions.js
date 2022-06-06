@@ -9,7 +9,10 @@ import {
     POST_LIST_FAIL,
     POST_DELETE_REQUEST,
     POST_DELETE_SUCESSS,
-    POST_DELETE_FAIL
+    POST_DELETE_FAIL,
+    USER_THEME_REQUEST,
+    USER_THEME_SUCCESS,
+    USER_THEME_FAIL
  
 } from "../constants/postConstants";
 
@@ -119,6 +122,8 @@ export const deleteLink = (id) => async (
       dispatch({
         type: POST_DELETE_SUCESSS,
       })
+
+
     }
 
     catch(error){
@@ -133,5 +138,46 @@ export const deleteLink = (id) => async (
     
 
   }
-    
+
+  export const uploadTheme = (image) => async (
+    dispatch,getState
+  ) => {
+    try{
+
+      dispatch({ type: USER_THEME_REQUEST })
+
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+        const config = { 
+          headers: {
+           "Content-Type": "multipart/form-data"
+          }
+        }
+  
+      const { data } = await axios.patch(
+        `${DEV_PORT}/api/link/${userInfo.username}/theme`,
+        image,
+        config
+         
+      )
+
+      dispatch({
+        type: USER_THEME_SUCCESS,
+        payload: data,
+      })
+    }
+
+    catch(error){
+      dispatch({
+        type: USER_THEME_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+
+  }
    

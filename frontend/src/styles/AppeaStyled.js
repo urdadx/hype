@@ -61,7 +61,7 @@ export const AppearanceStyled = styled.section`
     }
 
 
-    .slot{
+    .border{
         width:580px;
         margin:auto;
         border: 1px dashed #666;
@@ -69,7 +69,7 @@ export const AppearanceStyled = styled.section`
     }
 
     .upload{
-        height:30%;
+        height:31%;
     }
 
     .field-label{
@@ -107,7 +107,7 @@ export const AppearanceStyled = styled.section`
     .button_wrapper{
         display: flex;
         justify-content: center;
-        margin-top: 3.5rem;
+        margin-top: 1.5rem;
 
     }
 

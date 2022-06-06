@@ -9,7 +9,10 @@ import {
     POST_LIST_FAIL,
     POST_DELETE_REQUEST,
     POST_DELETE_SUCESSS,
-    POST_DELETE_FAIL
+    POST_DELETE_FAIL,
+    USER_THEME_SUCCESS,
+    USER_THEME_REQUEST,
+    USER_THEME_FAIL
 
 } from "../constants/postConstants";
 
@@ -57,3 +60,18 @@ export const postDeleteReducer = (state = {}, action) => {
       return state
   }
 }
+
+
+export const themeUpload = (state = {}, action) => {
+  switch (action.type) {
+    case USER_THEME_REQUEST:
+      return { loading: true }
+    case USER_THEME_SUCCESS:
+      return { loading: false, success: true }
+    case USER_THEME_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+

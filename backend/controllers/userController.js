@@ -3,7 +3,7 @@ import generateToken from '../utils/generateToken.js'
 import User from '../models/userModel.js'
 import uploadImageToStorage from '../utils/fileUpload.js'
 
-// Login user
+
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
 
@@ -24,7 +24,7 @@ const authUser = asyncHandler(async (req, res) => {
   }
 })
 
-// register user
+
 const registerUser = asyncHandler(async (req, res) => {
   const { username, email, password } = req.body
 
@@ -33,11 +33,17 @@ const registerUser = asyncHandler(async (req, res) => {
     throw new Error('All fields required. Please fill the form')
   }
 
-  const userExists = await User.findOne({ email })
-
-  if (userExists) {
+  const emailExists = await User.findOne({ email })
+  const usernameExist = await User.findOne({ username })
+  
+  if(usernameExist){
     res.status(400)
-    throw new Error('This email address is already associated with aN Hype account.')
+    throw new Error('Username already in use')
+  }
+
+  if (emailExists) {
+    res.status(400)
+    throw new Error('This email address is already associated with an Hype account')
   }
 
   const user = await User.create({
@@ -63,7 +69,7 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 })
 
-// get user profile
+
 const getUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
 
@@ -80,7 +86,7 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 })
 
-//update user profile
+
 const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
 
@@ -110,13 +116,12 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 
 
-// all users
 const getUsers = asyncHandler(async (req, res) => {
   const users = await User.find({})
   res.json(users)
 })
 
-// delete user
+
 const deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id)
 
@@ -129,7 +134,7 @@ const deleteUser = asyncHandler(async (req, res) => {
   }
 })
 
-// get user by ID
+
 const getUserById = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id).select('-password')
 
@@ -141,7 +146,7 @@ const getUserById = asyncHandler(async (req, res) => {
   }
 })
 
-// Update user
+
 const updateUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id)
 
@@ -165,7 +170,7 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 })
 
-// Upload profile photo
+
 const uploadProfile = asyncHandler(async(req,res)=> {
   const file = req.file;
   const user = await User.findById(req.user._id)

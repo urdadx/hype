@@ -16,6 +16,7 @@ import {
     postCreateReducer,
     postDeleteReducer,
     postListReducer,
+    themeUpload,
   
 } from './reducers/postReducers';
 
@@ -31,7 +32,8 @@ const reducer = combineReducers({
     userUpdate: userUpdateReducer,
     postCreate: postCreateReducer,
     postList: postListReducer,
-    postDelete: postDeleteReducer
+    postDelete: postDeleteReducer,
+    userThemeUpload: themeUpload
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

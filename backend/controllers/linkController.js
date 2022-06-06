@@ -1,7 +1,10 @@
 import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js';
+import uploadImageToStorage from '../utils/fileUpload.js';
 
 const ALL_ICONS_FOLDER = "hype/icons/"
+const ALL_THEMES_FOLDER = "hype/themes/"
+
 
 const createLink = asyncHandler(async (req, res) => {
     const { title, url } = req.body;
@@ -13,10 +16,9 @@ const createLink = asyncHandler(async (req, res) => {
         throw new Error("User not found");
     }
 
-
     try{
 
-        let newLink  = {
+        let newLink = {
             title,
             url
         }
@@ -24,10 +26,10 @@ const createLink = asyncHandler(async (req, res) => {
         newLink = user.links.push(newLink);
         user.save();
         newLink = await User.findById({ _id: user._id })
-        res.status(401).send(newLink);
+        res.status(200).send(newLink);
     }
-    catch(err){
-        console.log(err.message)
+    catch(error){
+        res.status(400).send(error)
     }
     
 })
@@ -47,7 +49,7 @@ const userLinks = asyncHandler(async(req,res)=>{
     .then(links => {
         res.json({ links })
     })
-    .catch(err => console.log(err));
+    .catch(err => res.status(400).send(err));
 })
 
 
@@ -75,7 +77,37 @@ const deleteLink = asyncHandler(async(req,res)=>{
 })
 
 const uploadTheme = asyncHandler(async (req,res)=> {
+    const file = req.file;
+    const username = req.params.username;
+    const queryUsername = '^' + username + '$';
+
+    const user =  await User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
     
+    if(!user) res.status(401).status("You are not authorized");
+    
+    if(user){
+        if (file){
+          uploadImageToStorage(file, ALL_THEMES_FOLDER )
+            .then((url) => {
+              user.theme = url
+              const updatedUser = user.save();
+      
+              return res.status(200).send({
+                image: url      
+              });
+            })
+            .catch((error) => {
+              return res.status(500).send({
+                error: error,
+              });
+            });
+        } 
+        else {
+          return res.status(422).send({
+            error: "File is required",
+          });
+        }
+    }
 })
 
 
@@ -86,5 +118,6 @@ const uploadTheme = asyncHandler(async (req,res)=> {
 export{
     createLink,
     userLinks,
-    deleteLink
+    deleteLink,
+    uploadTheme
 }

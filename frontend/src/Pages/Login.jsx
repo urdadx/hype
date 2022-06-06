@@ -7,6 +7,7 @@ import { AuthStyled } from '../styles/AuthStyled';
 import THUNDER from "../assets/images/thunder.png"
 import { Link } from "react-router-dom"
 
+
 const Login = () => {
 
     const [email, setEmail] = useState("")

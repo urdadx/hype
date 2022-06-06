@@ -22,7 +22,7 @@ const Inputs = () => {
             });  
         }
         else{
-            try{
+            try{    
                 dispatch(createLink(title, url))           
                 setTitle("")
                 setUrl("")

@@ -15,7 +15,7 @@ const Navbar = () => {
                 <Link className="link" to={`/admin/${userInfo.username}`}>Links</Link>
             </div>
             <div>
-                <Link className="link" to="/appearance">Appearance</Link>
+                <Link className="link" to={`/appearance/${userInfo.username}`}>Appearance</Link>
             </div>
             <div>
                 <Link className="link" to="/profile">Settings</Link>

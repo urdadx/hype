@@ -23,7 +23,7 @@ const SignUp = () => {
 
     useEffect(() => {
         if (userInfo) {
-            navigate(redirect)
+            navigate(`${redirect}/${userInfo.username}`)
         }
     }, [navigate, userInfo, redirect])
 
