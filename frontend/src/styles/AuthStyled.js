@@ -252,7 +252,7 @@ export const AuthStyled = styled.section`
      font-weight:500;
      font-size:16px;
      padding:10px;
-     margin-bottom:1rem;
+     margin-top:0.785rem;
      line-height: 1.5rem;
      border-radius: 4px;;
   }

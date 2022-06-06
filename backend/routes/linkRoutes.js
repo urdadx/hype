@@ -4,7 +4,7 @@ import Multer from 'multer'
 
 const router = express.Router()
 
-import { createLink, userLinks } from "../controllers/linkController.js";
+import { createLink, deleteLink, userLinks } from "../controllers/linkController.js";
 
 
 const multer = Multer({
@@ -16,6 +16,7 @@ const multer = Multer({
 
 
 
+router.patch('/:username/delete', deleteLink)
 router.post('/new', protect, createLink)
 router.get('/all', protect, userLinks)
 

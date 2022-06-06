@@ -5,6 +5,9 @@ import { useState, useEffect } from 'react';
 import ModalComp from "./ModalComp";
 import { useSelector, useDispatch } from "react-redux"
 import { queryAllLinks } from "../actions/postActions";
+import { TailSpin } from "react-loader-spinner";
+import { customStyles } from "../styles/ModalStyles";
+
 
 const WorkSpace = () => {
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -19,24 +22,6 @@ const WorkSpace = () => {
         dispatch(queryAllLinks())
     },[])
 
-
-    const customStyles = {
-        content: {
-          top: '45%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          borderRadius:'10px',
-          fontFamily: 'Inter',
-          width:"70%",
-          height:"75%",
-          padding:"5px",
-          overflowX:"hidden"
-        },
-      };
-
     const openModal = () => {
       setIsOpen(true);
     }
@@ -45,15 +30,12 @@ const WorkSpace = () => {
       setIsOpen(false);
     }
 
-
- 
-  
     return ( 
         <>
             <WorkSpaceStyled>
                  <ButtonGrid>
                     <Button form = "my-form">Add New Link</Button>
-                    <Button onClick={openModal}>🧭 Explore</Button>
+                    <Button onClick={openModal}>Explore</Button>
                  </ButtonGrid>
 
                     <Modal
@@ -62,23 +44,25 @@ const WorkSpace = () => {
                         style={customStyles}
                         contentLabel="Example Modal"
                         >
-                         <ModalComp  close = {closeModal} />
+                        <ModalComp  close = {closeModal} />
                     </Modal>
                     {
                       !loading ? links.map((link) => {
-                          return <Card link = {link} key={link._id} /> 
+                          return <Card link = {link} key={link._id} id= {link._id} /> 
                       })
                       :
                         <div className="no-links">
-                            Loading...
+                            <TailSpin color="grey" width={50} height={50} ariaLabel="loading-indicator" />
                         </div>
                     }
 
                     {
-                      links.length === 0 &&
+                      !loading && links.length === 0 ?
                       <div className="no-links">
                          <p>You have no Links yet 😔</p>
                       </div>
+                      :
+                      ""
                     }
 
                     {

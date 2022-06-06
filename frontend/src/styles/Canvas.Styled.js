@@ -13,6 +13,7 @@ export const CanvaStyled = styled.section`
         height: 100%;
         width:680px;
         max-width:100%;
+        background-color: #F5F6F8;
 
     }
 

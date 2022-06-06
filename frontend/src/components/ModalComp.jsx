@@ -15,7 +15,7 @@ const ModalComp = ({close, addField}) => {
                 </div>
                 <p className="rec">Recommended for you</p>
                 <div className="socials">
-                    <Link onClick={addField} className="div" to="#">
+                    <Link className="div" to="#">
                         <img alt="youtube" src="https://img.icons8.com/color/48/000000/youtube-play.png" />
                         <p>YouTube</p>
                     </Link>

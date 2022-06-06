@@ -2,8 +2,9 @@ import { Nav } from "../styles/Render.Styled";
 import { Button } from "../styles/Render.Styled";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { PreviewStyled } from "../styles/Preview";
 
-const RenderNav = () => {
+const RenderComp = () => {
 
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
@@ -12,7 +13,7 @@ const RenderNav = () => {
         <>
             <Nav>
                     <div>
-                        {userInfo ? <span>My Linktree: </span > : "" }
+                        {userInfo ? <span>My Hyper: </span > : "" }
                         { userInfo ? 
                         <Link className="linktree" target="_blank" to="/https:link">
                           {`https://hype.me/${userInfo.username}`} 
@@ -22,9 +23,16 @@ const RenderNav = () => {
                     <div>   
                         <Button>Share</Button>
                     </div>
-                </Nav>
+            </Nav>
+            
+            <PreviewStyled>
+                <div className="phone-case">
+                    <iframe title="preview"  src="" />
+                </div>
+            </PreviewStyled>
+            
         </>
     );
 }
  
-export default RenderNav;
+export default RenderComp;

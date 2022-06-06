@@ -6,7 +6,10 @@ import {
     USER_POST_FAIL,
     POST_LIST_REQUEST,
     POST_LIST_SUCESSS,
-    POST_LIST_FAIL
+    POST_LIST_FAIL,
+    POST_DELETE_REQUEST,
+    POST_DELETE_SUCESSS,
+    POST_DELETE_FAIL
  
 } from "../constants/postConstants";
 
@@ -96,6 +99,39 @@ export const queryAllLinks = () => async (
             : error.message,
       })
     }
+  }
+
+
+export const deleteLink = (id) => async (
+    dispatch,getState
+  ) => {
+    try {
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+      dispatch({ type: POST_DELETE_REQUEST })
+      await axios.patch(
+        `${DEV_PORT}/api/link/${userInfo.username}/delete`,
+          {_id :id}
+         
+      )
+      dispatch({
+        type: POST_DELETE_SUCESSS,
+      })
+    }
+
+    catch(error){
+      dispatch({
+        type: POST_DELETE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+    
+
   }
     
    

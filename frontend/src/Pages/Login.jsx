@@ -5,7 +5,7 @@ import { LOGIN_LOGO_URL } from "../assets/images/imageUrl";
 import { useNavigate } from "react-router-dom";
 import { AuthStyled } from '../styles/AuthStyled';
 import THUNDER from "../assets/images/thunder.png"
-
+import { Link } from "react-router-dom"
 
 const Login = () => {
 
@@ -23,7 +23,7 @@ const Login = () => {
   
     useEffect(() => {
       if (userInfo) {
-        navigate(redirect)
+        navigate(`${redirect}/${userInfo.username}`)
       }
     }, [navigate, userInfo, redirect])
   
@@ -96,7 +96,7 @@ const Login = () => {
                     <div className="footer">
                         <hr></hr>
                         <p className="forgot-alert">
-                            Forgot Password? <a className="recover" href="">Recover Password</a>
+                            Forgot Password? <Link to="#" className="recover" href="">Recover Password</Link>
                         </p>
 
                     </div>
@@ -104,6 +104,7 @@ const Login = () => {
 
                 <div className="image-wrapper">
                    <img
+                        alt="login-illus"
                         className="img-illustration"
                         src={LOGIN_LOGO_URL}
                     

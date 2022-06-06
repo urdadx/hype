@@ -51,10 +51,40 @@ const userLinks = asyncHandler(async(req,res)=>{
 })
 
 
+const deleteLink = asyncHandler(async(req,res)=>{
+    const username = req.params.username;
+	const { _id } = req.body;
+	const queryUsername = '^' + username + '$';
+  
+	User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+	  .select('-password -email')
+	  .then(user => {
+  
+		user.links.forEach((link, index) => {
+		  
+		if(link._id.toString() === _id.toString()) {
+			user.links.splice(index, 1);
+			user.save()
+			  .then(user => res.json(user))
+			  .catch(err => res.status(400).json('Error: ' + err));
+		  }
+		});
+	  })
+	  .catch(err => res.status(400).json('Error: ' + err))
+
+})
+
+const uploadTheme = asyncHandler(async (req,res)=> {
+    
+})
+
+
+
 
 
 
 export{
     createLink,
-    userLinks
+    userLinks,
+    deleteLink
 }

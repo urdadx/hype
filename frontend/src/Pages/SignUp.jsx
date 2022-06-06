@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from "react-router-dom";
 import THUNDER from "../assets/images/thunder.png"
 import PARTY_IMG from "../assets/images/party.jpg"
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
 
@@ -106,7 +107,7 @@ const SignUp = () => {
                     <div className="footer">
                         <hr></hr>
                         <p className="forgot-alert">
-                            Forgot Password? <a className="recover" href="">Recover Password</a>
+                            Forgot Password? <Link to="#" className="recover" href="">Recover Password</Link>
                         </p>
 
                     </div>
@@ -114,6 +115,7 @@ const SignUp = () => {
 
                 <div className="image-wrapper">
                    <img
+                        alt="sign-illus"
                         className="img-illustration"
                         src={PARTY_IMG}
                     

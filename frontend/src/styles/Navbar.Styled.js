@@ -33,7 +33,7 @@ export const NavbarStyled = styled.section`
 
 `
 
-export const Dropdown = styled.section`
+export const InputStyled = styled.section`
     display: block;
     -webkit-box-align: stretch;
     -webkit-box-pack: start;
