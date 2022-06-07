@@ -12,7 +12,13 @@ import {
     POST_DELETE_FAIL,
     USER_THEME_SUCCESS,
     USER_THEME_REQUEST,
-    USER_THEME_FAIL
+    USER_THEME_FAIL,
+    CHOOSE_THEME_REQUEST,
+    CHOOSE_THEME_SUCCESS,
+    CHOOSE_THEME_FAIL,
+    USER_PROFILE_REQUEST,
+    USER_PROFILE_SUCCESS,
+    USER_PROFILE_FAIL
 
 } from "../constants/postConstants";
 
@@ -75,3 +81,29 @@ export const themeUpload = (state = {}, action) => {
   }
 }
 
+export const chooseReducer = (state = {}, action) => {
+  switch (action.type) {
+    case CHOOSE_THEME_REQUEST:
+      return { loading: true }
+    case CHOOSE_THEME_SUCCESS:
+      return { loading: false, success: true }
+    case CHOOSE_THEME_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}
+
+
+export const uploadprofileReducer = (state = {}, action) => {
+  switch (action.type) {
+    case USER_PROFILE_REQUEST:
+      return { loading: true }
+    case USER_PROFILE_SUCCESS:
+      return { loading: false, success: true }
+    case USER_PROFILE_FAIL:
+      return { loading: false, error: action.payload }
+    default:
+      return state
+  }
+}

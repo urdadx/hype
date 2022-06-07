@@ -12,7 +12,13 @@ import {
     POST_DELETE_FAIL,
     USER_THEME_REQUEST,
     USER_THEME_SUCCESS,
-    USER_THEME_FAIL
+    USER_THEME_FAIL,
+    CHOOSE_THEME_REQUEST,
+    CHOOSE_THEME_SUCCESS,
+    CHOOSE_THEME_FAIL,
+    USER_PROFILE_REQUEST,
+    USER_PROFILE_SUCCESS,
+    USER_PROFILE_FAIL
  
 } from "../constants/postConstants";
 
@@ -139,7 +145,7 @@ export const deleteLink = (id) => async (
 
   }
 
-  export const uploadTheme = (image) => async (
+export const uploadTheme = (image) => async (
     dispatch,getState
   ) => {
     try{
@@ -180,4 +186,86 @@ export const deleteLink = (id) => async (
     }
 
   }
+
+
+  export const chooseTheme = (option) => async (
+    dispatch,getState
+  ) => {
+    try{
+
+      dispatch({ type: CHOOSE_THEME_REQUEST })
+
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+      const { data } = await axios.patch(
+        `${DEV_PORT}/api/link/${userInfo.username}/choose`,
+        {option},
+         
+      )
+
+      dispatch({
+        type: CHOOSE_THEME_SUCCESS,
+        payload: data,
+      })
+    }   
+
+    catch(error){
+      dispatch({
+        type: CHOOSE_THEME_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+
+  }
+
+
+  export const uploadProfile = (image) => async (
+    dispatch,getState
+  ) => {
+    try{
+
+      dispatch({ type: USER_PROFILE_REQUEST })
+
+      const {
+        userLogin: { userInfo },
+      } = getState()
+
+        const config = { 
+          headers: {
+           "Content-Type": "multipart/form-data"
+          }
+        }
+  
+      const { data } = await axios.patch(
+        `${DEV_PORT}/api/auth/${userInfo.username}/upload`,
+        image,
+        config
+         
+      )
+
+      dispatch({
+        type: USER_PROFILE_SUCCESS,
+        payload: data,
+      })
+      localStorage.setItem("profilePicture", JSON.stringify(data.image))
+
+    }
+
+    catch(error){
+      dispatch({
+        type: USER_PROFILE_FAIL,
+        payload:
+          error.response && error.response.data.message
+            ? error.response.data.message
+            : error.message,
+      })
+    }
+
+  }
+   
    

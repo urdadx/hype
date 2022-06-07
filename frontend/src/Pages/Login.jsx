@@ -48,7 +48,7 @@ const Login = () => {
 
                      <div className="login-alert">
                         <p>Log in</p>
-                        <small>Need a Hyper account? <a href="/signup">Sign Up</a></small>
+                        <small>Need a Hyper account? <Link to="/">Sign Up</Link></small>
                      </div>
 
                      {

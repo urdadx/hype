@@ -1,22 +1,98 @@
-import Profile from "../assets/images/default.png"
 import { ProfileStyled } from "../styles/Profile.Styled";
 import { Button } from "../styles/WorkSpace.Styled";
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from 'react';
+import { ToastContainer } from "react-toastify";
+import { uploadProfile } from "../actions/postActions";
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify'
+import EllipsisText from "react-ellipsis-text";
+
 
 const ProfileComp  = () => {
+
+    const [file, setFile] = useState("")
+    const [isFilePicked, setIsFilePicked] = useState(false);
+    const [profileName, setProfile] = useState("")
+
+    const userLogin = useSelector((state) => state.userLogin)
+    const { userInfo } = userLogin
+
+    const profilePicture = JSON.parse(localStorage.getItem("profilePicture"))
+
+
+    const dispatch = useDispatch()
+
+
+    const changeHandler = (event) => {
+		setFile(event.target.files[0]);
+		setIsFilePicked(true);
+	};
+
+
+    const handleUpload = () => {
+        const image = new FormData();
+        image.append("file", file)
+
+        try{
+            dispatch(uploadProfile(image))
+            toast.success("Profile uploaded successfully", {
+                position: toast.POSITION.TOP_RIGHT, 
+                autoClose:1900,
+                theme: "colored"
+            });  
+            setIsFilePicked(false)
+            setTimeout(() => {
+                window.location.reload();
+            },4000) 
+        }
+        
+        catch(error){
+            toast.error("An error occured. Try again", {
+                position: toast.POSITION.TOP_RIGHT, 
+                autoClose:1900,
+                theme: "colored"
+            });  
+            setIsFilePicked(false)
+        }
+    }
+
+
     return ( 
         <>
+        <ToastContainer />
             <ProfileStyled>
 
-                <p className="alert">* Scroll down and save any changes made *</p>
                 <h3 className="title">Profile</h3>
                 <div className="profile-wrapper">
                     <div className="profile-info">
-                            <img src={Profile} alt="profile-pic" />
-                            <button>Pick an image</button>
-                            <button>Remove</button>
+                            <img src={profilePicture} alt="profile-pic" />
+                            <div className="upload-btn-wrapper">
+                                <button className="btn">
+                                    {
+                                        isFilePicked ? 
+                                        <EllipsisText text={file.name} length={"25"} />
+                                        : "Pick an image"
+                                    }
+                                </button>
+                                <input onChange={changeHandler} type="file" name="myfile" />
+                            </div>
+                            {
+                                isFilePicked ? 
+                                <button  onClick={handleUpload}>
+                                    Upload
+                                </button>
+                                :
+                                <button>
+                                    Remove
+                                </button>
+                            }
+                          
                     </div>
                     <div className="input_wrapper">
-                        <input className="username" type="text" placeholder="Profile Title" />
+                        <input className="username"  
+                               type="text" placeholder="Profile Title" 
+                        />
                         <textarea 
                             rows="4"
                             cols="4"
@@ -27,12 +103,9 @@ const ProfileComp  = () => {
 
                 </div>
 
-                <h3 className="title update">Update Profile</h3>
+                <h3 className="title update">Change Password</h3>
                 <div className="profile-wrapper ">
                     <div className="input_wrapper">
-                        <input className="username email" type="text"
-                                placeholder="Change current email"
-                         />
 
                         <input className="username second" type="text"
                                 placeholder="Old password"

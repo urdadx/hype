@@ -2,9 +2,9 @@ import { NavbarStyled } from "../styles/Navbar.Styled";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const Navbar = () => {
- 
 
+const Navbar = () => {
+    
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
@@ -18,7 +18,7 @@ const Navbar = () => {
                 <Link className="link" to={`/appearance/${userInfo.username}`}>Appearance</Link>
             </div>
             <div>
-                <Link className="link" to="/profile">Settings</Link>
+                <Link className="link" to={`/profile/${userInfo.username}`}>Settings</Link>
             </div>
             <div>
                  <Link className="link" to="/analytics">Analytics</Link>

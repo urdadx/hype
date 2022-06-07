@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const Nav = styled.section`
-     display: flex;
+    display: flex;
     -webkit-box-align: stretch;
     -webkit-box-pack: start;
     justify-content: space-between;

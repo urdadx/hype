@@ -13,10 +13,12 @@ import {
   } from './reducers/userReducers'
 
 import { 
+    chooseReducer,
     postCreateReducer,
     postDeleteReducer,
     postListReducer,
     themeUpload,
+    uploadprofileReducer,
   
 } from './reducers/postReducers';
 
@@ -33,7 +35,9 @@ const reducer = combineReducers({
     postCreate: postCreateReducer,
     postList: postListReducer,
     postDelete: postDeleteReducer,
-    userThemeUpload: themeUpload
+    userThemeUpload: themeUpload,
+    themeChoose: chooseReducer,
+    uploadProfile: uploadprofileReducer
 })
 
 const userInfoFromStorage = localStorage.getItem('userInfo')

@@ -115,7 +115,7 @@ export const ProfileStyled = styled.section`
     }
 
     .second{
-        margin-top: 2rem;
+        margin-top: 0.5rem;
     }
 
     .third{
@@ -126,5 +126,39 @@ export const ProfileStyled = styled.section`
     .update{
         margin-top:2.5rem;
     }
+
+    .upload-btn-wrapper {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+        border-radius: 8px;
+    }
+    
+    .btn{
+        width:230px;
+        height:45px;
+        padding:10px;
+        font-weight:bold;
+        outline:none;
+        cursor: pointer;
+        border:none;
+        background-color: rgb(124, 65, 255);
+        color:white;
+        font-size: inherit;
+        font-family: "Inter",sans-serif; 
+    }
+
+
+    .upload-btn-wrapper input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+    .upload-btn-wrapper input[type=file]{
+        background-color:rgb(128, 133, 237);
+    }
+
 
 `
