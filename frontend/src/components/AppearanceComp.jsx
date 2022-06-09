@@ -6,12 +6,12 @@ import { Button } from "../styles/WorkSpace.Styled";
 import { uploadTheme } from "../actions/postActions";
 import { useState } from "react"
 import { useDispatch } from "react-redux";
-import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import { Icon } from '@iconify/react';
 import { chooseTheme } from "../actions/postActions";
 import { optionOne, optionThree, optionTwo } from "../assets/Themes/ThemeLinks";
+import { errorNotif, successNotif } from '../utils/Notifications';
+
 
 const ApprearanceComp = () => {
 
@@ -32,20 +32,12 @@ const ApprearanceComp = () => {
 
         try{
             dispatch(uploadTheme(image))
-            toast.success("Theme uploaded successfully", {
-                position: toast.POSITION.TOP_RIGHT, 
-                autoClose:1900,
-                theme: "colored"
-            });  
+            successNotif("Theme added successfully")
             setIsFilePicked(false)
         }
         
         catch(error){
-            toast.error("An error occured. Try again", {
-                position: toast.POSITION.TOP_RIGHT, 
-                autoClose:1900,
-                theme: "colored"
-            });  
+            errorNotif("An error occured. Try again") 
             setIsFilePicked(false)
         }
     }
@@ -53,22 +45,14 @@ const ApprearanceComp = () => {
     const handleChoosing = (option) => {
         try{
             dispatch(chooseTheme(option))
-            toast.success("Theme applied successfully", {
-                position: toast.POSITION.TOP_RIGHT, 
-                autoClose:1900,
-                theme: "colored"
-            });  
+            successNotif("Theme applied successfully")
             setIsApplied(true)
             setTimeout(() => {
                 window.location.reload();
             },2000)  
         }
         catch(error){
-            toast.error("An error occured. Try again", {
-                position: toast.POSITION.TOP_RIGHT, 
-                autoClose:1900,
-                theme: "colored"
-            });  
+            errorNotif("An error occured. Try again")
             setIsApplied(false)
             console.log(error.message)
         }

@@ -1,34 +1,28 @@
 import { ProfileStyled } from "../styles/Profile.Styled";
 import { Button } from "../styles/WorkSpace.Styled";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useState } from 'react';
 import { ToastContainer } from "react-toastify";
 import { uploadProfile } from "../actions/postActions";
-import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify'
 import EllipsisText from "react-ellipsis-text";
+import { errorNotif, successNotif } from '../utils/Notifications';
+
 
 
 const ProfileComp  = () => {
 
     const [file, setFile] = useState("")
     const [isFilePicked, setIsFilePicked] = useState(false);
-    const [profileName, setProfile] = useState("")
-
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
+   
 
     const profilePicture = JSON.parse(localStorage.getItem("profilePicture"))
 
-
     const dispatch = useDispatch()
-
 
     const changeHandler = (event) => {
 		setFile(event.target.files[0]);
 		setIsFilePicked(true);
 	};
-
 
     const handleUpload = () => {
         const image = new FormData();
@@ -36,11 +30,7 @@ const ProfileComp  = () => {
 
         try{
             dispatch(uploadProfile(image))
-            toast.success("Profile uploaded successfully", {
-                position: toast.POSITION.TOP_RIGHT, 
-                autoClose:1900,
-                theme: "colored"
-            });  
+            successNotif("Profile uploaded successfully")
             setIsFilePicked(false)
             setTimeout(() => {
                 window.location.reload();
@@ -48,11 +38,7 @@ const ProfileComp  = () => {
         }
         
         catch(error){
-            toast.error("An error occured. Try again", {
-                position: toast.POSITION.TOP_RIGHT, 
-                autoClose:1900,
-                theme: "colored"
-            });  
+            errorNotif("An error occured. Try again")
             setIsFilePicked(false)
         }
     }
@@ -63,6 +49,7 @@ const ProfileComp  = () => {
         <ToastContainer />
             <ProfileStyled>
 
+           
                 <h3 className="title">Profile</h3>
                 <div className="profile-wrapper">
                     <div className="profile-info">
@@ -125,6 +112,8 @@ const ProfileComp  = () => {
 
                 <div style={{height:"150px"}}></div>
             </ProfileStyled>
+           
+
             
 
         </>

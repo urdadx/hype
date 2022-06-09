@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 import Toggle from 'react-toggle'
 import { ToggleStyled } from "../styles/Toggle.Styled";
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { toast } from 'react-toastify';
 import {  useDispatch } from "react-redux"
 import { deleteLink } from '../actions/postActions';
+import { errorNotif, successNotif } from '../utils/Notifications';
 
 const Card = ({ link, id }) => {
 
@@ -16,22 +15,13 @@ const Card = ({ link, id }) => {
     const handleDelete = () => {
         try{
             dispatch(deleteLink(id))
-            toast.success("Link deleted sucessfully!", {
-                position: toast.POSITION.TOP_RIGHT, 
-                autoClose:1900,
-                theme: "colored"
-            });  
-
+            successNotif("Link deleted successfully")
             setTimeout(() => {
                 window.location.reload();
             },2000)  
         }
         catch(error){
-            toast.error("An error occured", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose:1900,
-                theme: "colored"
-            }); 
+            errorNotif("An error occured. Try again")
         }
     }
  
@@ -69,7 +59,13 @@ const Card = ({ link, id }) => {
 
                         </Flex> 
                         <Flex>
-                            <div style={{marginTop:"12px"}} className="extras">
+                            <div style={{marginTop:"13px"}} className="extras">
+                                <Link to="#">
+                                    <Icon icon="bi:image" color="gray" />
+                                </Link>
+                                <Link className="edit" to="#">
+                                    <Icon icon="akar-icons:pencil" color="gray" />
+                                </Link>
                             </div>
                             <div>
                                 <Link onClick={handleDelete} to="#">

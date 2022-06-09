@@ -1,8 +1,8 @@
 import { InputStyled } from "../styles/Navbar.Styled";
 import { createLink  } from "../actions/postActions";
 import { useDispatch } from "react-redux";
-import { toast } from 'react-toastify';
 import { useState } from "react";
+import { errorNotif, successNotif } from "../utils/Notifications";
 
 const Inputs = () => {
 
@@ -14,24 +14,14 @@ const Inputs = () => {
     const handleSubmit = (e) => { 
         e.preventDefault()
         if(url === "" || title === ""){
-            // Show user notification
-            toast.error("All fields required", {
-                position: toast.POSITION.TOP_RIGHT,
-                autoClose:2000,
-                theme: "colored"
-            });  
+            errorNotif("All fields required")
         }
         else{
             try{    
                 dispatch(createLink(title, url))           
                 setTitle("")
                 setUrl("")
-                // Show user notification   
-                toast.success("Link added successfully", {
-                    position: toast.POSITION.TOP_RIGHT, 
-                    autoClose:2000,
-                    theme: "colored"
-                });  
+                successNotif("Link added successfully")
                 setTimeout(() => {
                     window.location.reload();
                 },2000)  
@@ -39,15 +29,8 @@ const Inputs = () => {
 
             }
             catch(error){
-                  // Show user notification   
-                  toast.error(error, {
-                    position: toast.POSITION.TOP_RIGHT, 
-                    autoClose:2000,
-                    theme: "colored"
-                });  
+                 errorNotif("An error occured. Try again") 
             }
-     
-
         }
 
     }  

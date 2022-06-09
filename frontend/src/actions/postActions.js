@@ -267,5 +267,5 @@ export const uploadTheme = (image) => async (
     }
 
   }
-   
+
    
