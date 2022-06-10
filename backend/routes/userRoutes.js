@@ -10,7 +10,8 @@ import {
   deleteUser,
   getUserById,
   updateUser,
-  uploadProfile
+  uploadProfile,
+  verifyUsername
 } from '../controllers/userController.js'
 import { protect, admin } from '../middleware/authMiddleware.js'
 
@@ -24,10 +25,12 @@ const multer = Multer({
 
 router.route('/signup', registerUser).post(registerUser).get(protect, admin, getUsers)
 router.post('/login', authUser)
-router.patch('/upload/profile', multer.single("file"),protect, uploadProfile)
+router.patch('/:username/upload', multer.single("file"), uploadProfile)
+router.get("/:username/verify", verifyUsername)
+router.get("/:username", getUserProfile)
+
 router
   .route('/profile')
-  .get( getUserProfile)
   .put(protect, updateUserProfile)
 router
   .route('/:id')

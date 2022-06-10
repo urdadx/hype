@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import { Icon } from '@iconify/react';
 import { chooseTheme } from "../actions/postActions";
 import { optionOne, optionThree, optionTwo } from "../assets/Themes/ThemeLinks";
-import { errorNotif, successNotif } from '../utils/Notifications';
+import { errorNotification, successNotification } from '../utils/Notifications';
 
 
 const ApprearanceComp = () => {
@@ -20,6 +20,8 @@ const ApprearanceComp = () => {
     const [file, setFile] = useState("")
     const [isFilePicked, setIsFilePicked] = useState(false);
     const [isApplied, setIsApplied] = useState(false);
+
+
 
     const changeHandler = (event) => {
 		setFile(event.target.files[0]);
@@ -32,12 +34,15 @@ const ApprearanceComp = () => {
 
         try{
             dispatch(uploadTheme(image))
-            successNotif("Theme added successfully")
+            successNotification("Theme added successfully")
             setIsFilePicked(false)
+            setTimeout(() => {
+                window.location.reload();
+            },3000) 
         }
         
         catch(error){
-            errorNotif("An error occured. Try again") 
+            errorNotification()
             setIsFilePicked(false)
         }
     }
@@ -45,14 +50,15 @@ const ApprearanceComp = () => {
     const handleChoosing = (option) => {
         try{
             dispatch(chooseTheme(option))
-            successNotif("Theme applied successfully")
+            successNotification("Theme applied successfully")
             setIsApplied(true)
+             
             setTimeout(() => {
                 window.location.reload();
-            },2000)  
+            },3000)  
         }
         catch(error){
-            errorNotif("An error occured. Try again")
+            errorNotification()
             setIsApplied(false)
             console.log(error.message)
         }
@@ -132,7 +138,7 @@ const ApprearanceComp = () => {
                             </div>
                         </div>
                         <div onClick={() => handleChoosing(optionThree)}  className="div-image">
-                            <img className="image"  src={ThemeThree} alt="theme-three" />
+                            <img className="image"  src={optionThree} alt="theme-three" />
                             <div className="overlay">
                                 <div className="free-wrapper">
                                     <h5>Choose</h5>

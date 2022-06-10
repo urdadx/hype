@@ -5,16 +5,15 @@ import { useState } from 'react';
 import { ToastContainer } from "react-toastify";
 import { uploadProfile } from "../actions/postActions";
 import EllipsisText from "react-ellipsis-text";
-import { errorNotif, successNotif } from '../utils/Notifications';
-
-
+import { errorNotification, successNotification } from '../utils/Notifications';
+import { useParams } from "react-router-dom";
 
 const ProfileComp  = () => {
 
     const [file, setFile] = useState("")
     const [isFilePicked, setIsFilePicked] = useState(false);
+    const { username } = useParams()
    
-
     const profilePicture = JSON.parse(localStorage.getItem("profilePicture"))
 
     const dispatch = useDispatch()
@@ -30,7 +29,7 @@ const ProfileComp  = () => {
 
         try{
             dispatch(uploadProfile(image))
-            successNotif("Profile uploaded successfully")
+            successNotification("Profile uploaded successfully")
             setIsFilePicked(false)
             setTimeout(() => {
                 window.location.reload();
@@ -38,7 +37,7 @@ const ProfileComp  = () => {
         }
         
         catch(error){
-            errorNotif("An error occured. Try again")
+            errorNotification()
             setIsFilePicked(false)
         }
     }
@@ -67,7 +66,7 @@ const ProfileComp  = () => {
                             {
                                 isFilePicked ? 
                                 <button  onClick={handleUpload}>
-                                    Upload
+                                    Upload 🚀 
                                 </button>
                                 :
                                 <button>
@@ -78,12 +77,12 @@ const ProfileComp  = () => {
                     </div>
                     <div className="input_wrapper">
                         <input className="username"  
-                               type="text" placeholder="Profile Title" 
+                               type="text" placeholder={`@${username}`} 
                         />
                         <textarea 
                             rows="4"
                             cols="4"
-                            placeholder="Enter a bio description to appear on your hyper">
+                            placeholder="Enter a bio description ( 75 character limit )">
                             
                         </textarea>
                     </div>

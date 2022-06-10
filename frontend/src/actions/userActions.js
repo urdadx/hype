@@ -54,6 +54,8 @@ export const login = (email, password) => async (dispatch) => {
 
     localStorage.setItem('userInfo', JSON.stringify(data))
     localStorage.setItem("profilePicture", JSON.stringify(data.profilePicture))
+    localStorage.setItem("theme", JSON.stringify(data.theme))
+
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -67,6 +69,8 @@ export const login = (email, password) => async (dispatch) => {
 
 export const logout = () => (dispatch) => {
   localStorage.removeItem('userInfo')
+  localStorage.removeItem("theme")
+  localStorage.removeItem("profilePicture")
   dispatch({ type: USER_LOGOUT })
   dispatch({ type: USER_DETAILS_RESET })
   dispatch({ type: USER_LIST_RESET })
@@ -104,6 +108,8 @@ export const register = (username, email, password) => async (dispatch) => {
 
     localStorage.setItem('userInfo', JSON.stringify(data))
     localStorage.setItem("profilePicture", JSON.stringify(data.profilePicture))
+    localStorage.setItem("theme", JSON.stringify(data.theme))
+
 
   } catch (error) {
     dispatch({
@@ -116,30 +122,18 @@ export const register = (username, email, password) => async (dispatch) => {
   }
 }
 
-export const getUserDetails = (id) => async (dispatch, getState) => {
+export const getUserDetails = (username) => async (dispatch) => {
   try {
     dispatch({
       type: USER_DETAILS_REQUEST,
     })
-
-    const {
-      userLogin: { userInfo },
-    } = getState()
-
-    const config = {
-      headers: {
-      
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-
-    const { data } = await axios.get(`${DEV_PORT}/api/auth/${id}`, config)
+    const { data } = await axios.get(`${DEV_PORT}/api/auth/${username}`)
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,
     })
-  } catch (error) {
+  } catch (error) { 
     const message =
       error.response && error.response.data.message
         ? error.response.data.message

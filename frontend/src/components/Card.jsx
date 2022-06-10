@@ -6,7 +6,7 @@ import { ToggleStyled } from "../styles/Toggle.Styled";
 import { ToastContainer } from 'react-toastify';
 import {  useDispatch } from "react-redux"
 import { deleteLink } from '../actions/postActions';
-import { errorNotif, successNotif } from '../utils/Notifications';
+import { errorNotification, successNotification } from '../utils/Notifications';
 
 const Card = ({ link, id }) => {
 
@@ -15,13 +15,13 @@ const Card = ({ link, id }) => {
     const handleDelete = () => {
         try{
             dispatch(deleteLink(id))
-            successNotif("Link deleted successfully")
+            successNotification("Link deleted successfully")
             setTimeout(() => {
                 window.location.reload();
             },2000)  
         }
         catch(error){
-            errorNotif("An error occured. Try again")
+            errorNotification()
         }
     }
  
@@ -60,10 +60,7 @@ const Card = ({ link, id }) => {
                         </Flex> 
                         <Flex>
                             <div style={{marginTop:"13px"}} className="extras">
-                                <Link to="#">
-                                    <Icon icon="bi:image" color="gray" />
-                                </Link>
-                                <Link className="edit" to="#">
+                                 <Link to="#">
                                     <Icon icon="akar-icons:pencil" color="gray" />
                                 </Link>
                             </div>

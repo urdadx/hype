@@ -5,6 +5,7 @@ import SignUp from './Pages/SignUp';
 import Profile from './Pages/Profile';
 import Appearance from './Pages/Appearance';
 import NotFound from "./Pages/NotFound";
+import MyPage from "./Pages/MyPage";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/" element={<SignUp />} />
             <Route path="/profile/:username" element={<Profile />} />
             <Route path="/appearance/:username" element={<Appearance />} />
+            <Route path="/me/:username" element={<MyPage />} />
             <Route path="*" element={<NotFound />} />
          </Routes>
       </Router>

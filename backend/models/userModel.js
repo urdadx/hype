@@ -35,9 +35,13 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    bio: {
+      type: String,
+      default: "No bio yet"
+    },
     profilePicture:{
         type: String,
-        default:"uploads/default.png"
+        default:"https://firebasestorage.googleapis.com/v0/b/user-uploads-v1.appspot.com/o/hype%2Fassets%2Fdefault.png?alt=media&token=fe934a8c-39a8-42da-9871-9c9ccc3d3a9e"
     },
     isAdmin: {
       type: Boolean,
@@ -50,7 +54,7 @@ const userSchema = new mongoose.Schema(
     },
     theme:{
       type:String,
-      default:""
+      default:"https://firebasestorage.googleapis.com/v0/b/user-uploads-v1.appspot.com/o/hype%2Fthemes%2Ft3.png?alt=media&token=2921c754-9e01-47bb-bfa3-5da0f652b8ef"
     }
   },
   {

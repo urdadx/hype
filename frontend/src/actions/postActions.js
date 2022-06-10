@@ -173,6 +173,8 @@ export const uploadTheme = (image) => async (
         type: USER_THEME_SUCCESS,
         payload: data,
       })
+
+      localStorage.setItem("theme", JSON.stringify(data.image))
     }
 
     catch(error){
@@ -209,6 +211,8 @@ export const uploadTheme = (image) => async (
         type: CHOOSE_THEME_SUCCESS,
         payload: data,
       })
+      localStorage.setItem("theme", JSON.stringify(data))
+
     }   
 
     catch(error){

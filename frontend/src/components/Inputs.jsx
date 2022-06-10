@@ -2,7 +2,7 @@ import { InputStyled } from "../styles/Navbar.Styled";
 import { createLink  } from "../actions/postActions";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { errorNotif, successNotif } from "../utils/Notifications";
+import { errorNotification, successNotification } from "../utils/Notifications";
 
 const Inputs = () => {
 
@@ -14,14 +14,14 @@ const Inputs = () => {
     const handleSubmit = (e) => { 
         e.preventDefault()
         if(url === "" || title === ""){
-            errorNotif("All fields required")
+            errorNotification("All fields required")
         }
         else{
             try{    
                 dispatch(createLink(title, url))           
                 setTitle("")
                 setUrl("")
-                successNotif("Link added successfully")
+                successNotification("Link added successfully")
                 setTimeout(() => {
                     window.location.reload();
                 },2000)  
@@ -29,7 +29,7 @@ const Inputs = () => {
 
             }
             catch(error){
-                 errorNotif("An error occured. Try again") 
+                 errorNotification() 
             }
         }
 

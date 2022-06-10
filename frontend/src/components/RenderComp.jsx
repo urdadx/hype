@@ -27,7 +27,7 @@ const RenderComp = () => {
             
             <PreviewStyled>
                 <div className="phone-case">
-                    <iframe title="preview"  src="" />
+                    <iframe title="preview"  src={`http://localhost:3000/me/${userInfo.username}`} />
                 </div>
             </PreviewStyled>
             

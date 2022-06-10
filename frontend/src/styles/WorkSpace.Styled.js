@@ -125,7 +125,7 @@ export const CardStyled = styled.section`
 
     .title_wrapper{
         display: flex;
-        width:30px;
+        width:100%;
 
     }
 
@@ -136,7 +136,6 @@ export const CardStyled = styled.section`
     .extras{
         width: 100px;
         display: flex;
-        
         align-items:center;
     }
 

@@ -111,6 +111,28 @@ const uploadTheme = asyncHandler(async (req,res)=> {
 })
 
 
+const chooseTheme = asyncHandler(async(req,res) => {
+  
+  const username = req.params.username;
+  const queryUsername = '^' + username + '$';
+  const {option} = req.body;
+
+  await User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+  .select('-password -email')
+  .then(user => {
+      user.theme = option
+      user.save()
+      .then(user => res.json(user.theme))
+      .catch(err => res.status(400).json('Error: ' + err));
+  })
+  .catch(err => res.status(400).json('Error: ' + err))
+
+}
+)
+
+
+
+
 
 
 
@@ -119,5 +141,6 @@ export{
     createLink,
     userLinks,
     deleteLink,
-    uploadTheme
+    uploadTheme,
+    chooseTheme
 }

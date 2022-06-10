@@ -5,6 +5,7 @@ import Multer from 'multer'
 const router = express.Router()
 
 import { 
+  chooseTheme,
     createLink, 
     deleteLink, 
     uploadTheme, 
@@ -26,6 +27,9 @@ router.patch('/:username/delete', deleteLink)
 router.patch('/:username/theme', multer.single("file"), uploadTheme)
 router.post('/new', protect, createLink)
 router.get('/all', protect, userLinks)
+router.patch('/:username/choose', chooseTheme)
+
+
 
 
 export default router
