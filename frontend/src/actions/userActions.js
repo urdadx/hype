@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { API_URL } from '../utils/index.utils';
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
@@ -27,7 +28,6 @@ import {
 } from '../constants/userConstants'
 
 
-const DEV_PORT = process.env.REACT_APP_API_URL
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -42,7 +42,7 @@ export const login = (email, password) => async (dispatch) => {
     }
 
     const { data } = await axios.post(
-      `${DEV_PORT}/api/auth/login`,
+      `${API_URL}/api/auth/login`,
       { email, password },
       config
     )
@@ -93,7 +93,7 @@ export const register = (username, email, password) => async (dispatch) => {
 
 
     const { data } = await axios.post(
-      `${DEV_PORT}/api/auth/signup`,
+      `${API_URL}/api/auth/signup`,
       { username, email, password },
       config
     )
@@ -129,7 +129,7 @@ export const getUserDetails = (username) => async (dispatch) => {
     dispatch({
       type: USER_DETAILS_REQUEST,
     })
-    const { data } = await axios.get(`${DEV_PORT}/api/auth/${username}`)
+    const { data } = await axios.get(`${API_URL}/api/auth/${username}`)
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
@@ -167,7 +167,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.patch(`${DEV_PORT}/api/auth/profile`, user, config)
+    const { data } = await axios.patch(`${API_URL}/api/auth/profile`, user, config)
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
@@ -214,7 +214,7 @@ export const listUsers = () => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`${DEV_PORT}/api/auth/allUsers`, config)
+    const { data } = await axios.get(`${API_URL}/api/auth/allUsers`, config)
 
     dispatch({
       type: USER_LIST_SUCCESS,
@@ -251,7 +251,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       },
     }
 
-    await axios.delete(`${DEV_PORT}/api/auth/${id}`, config)
+    await axios.delete(`${API_URL}/api/auth/${id}`, config)
 
     dispatch({ type: USER_DELETE_SUCCESS })
   } catch (error) {
@@ -287,7 +287,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`${DEV_PORT}/api/auth/${user._id}`, user, config)
+    const { data } = await axios.put(`${API_URL}/api/auth/${user._id}`, user, config)
 
     dispatch({ type: USER_UPDATE_SUCCESS })
 

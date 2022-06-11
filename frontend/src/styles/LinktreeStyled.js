@@ -134,7 +134,7 @@ export const LinktreeStyled = styled.section`
 
     .showcase .overlay::-webkit-scrollbar {
         background:transparent;
-        width:1px;
+        width:0px;
     }
 
     .spacer{

@@ -6,7 +6,7 @@ import Render from "../components/Render";
 import { useState } from "react"
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";
-import { checkUsername } from "../utils/checkUsername";
+import { checkUsername } from "../utils/index.utils";
 
 
 const Profile  = () => {

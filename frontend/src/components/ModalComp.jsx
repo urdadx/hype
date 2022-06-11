@@ -1,7 +1,25 @@
 import { ModalStyled } from "../styles/WorkSpace.Styled";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createLink  } from "../actions/postActions";
+import { socialBrands } from "../utils/index.utils";
 
-const ModalComp = ({close, addField}) => {
+const ModalComp = ({ close }) => {
+
+    const [isClosed, setIsClosed] = useState(false)
+
+    const dispatch = useDispatch()
+
+    const handleExplore = (title) => {
+        dispatch(createLink(title))
+        setIsClosed(true)
+        setTimeout(()=> {
+            window.location.reload()
+        },1000)
+
+    }                                           
+
     return (
         <>  
             <ModalStyled>
@@ -13,56 +31,22 @@ const ModalComp = ({close, addField}) => {
                         <ion-icon size="large" name="close-outline"></ion-icon>
                     </Link>
                 </div>
+                
                 <p className="rec">Recommended for you</p>
                 <div className="socials">
-                    <Link className="div" to="#">
-                        <img alt="youtube" src="https://img.icons8.com/color/48/000000/youtube-play.png" />
-                        <p>YouTube</p>
-                    </Link>
-                    <Link className="div" to="#">
-                        <img alt="instagram" src="https://img.icons8.com/fluency/48/000000/instagram-new.png"/>
-                          <p>Instagram</p>
-                    </Link>
-                    <Link className="div" to="#">
-                        <img alt="linkedin" src="https://img.icons8.com/fluency/48/000000/linkedin.png" />
-                        <p>LinkedIn</p>
-                    </Link>
-                    <Link className="div" to="#">
-                        <img alt="spotify" src="https://img.icons8.com/fluency/48/000000/tiktok.png" />
-                        <p>Tiktok</p>
-                    </Link>
-                    <Link className="div" to="#">
-                        <img alt="twitter" src="https://img.icons8.com/color/48/000000/twitter--v1.png" />
-                        <p>Twitter</p>
-                    </Link>
-                    <Link className="div" to="#">
-                        <img alt="twitter" src="https://img.icons8.com/fluency/48/undefined/domain.png" />
-                        <p>Website</p>
-                    </Link>
-                    <Link className="div" to="#">
-                        <img alt="twitter" src="https://img.icons8.com/fluency/48/undefined/github.png" />
-                        <p>Github</p>
-                    </Link>
-                    <Link className="div" to="#">
-                        <img alt="twitter" src="https://img.icons8.com/fluency/48/undefined/discord-logo.png" />
-                        <p>Discord</p>
-                    </Link>
-                    
-                    <Link className="div" to="#">
-                        <img alt="twitter" src="https://img.icons8.com/ios-filled/50/undefined/medium-logo.png  " />
-                        <p>Blog</p>
-                    </Link>
-                    <Link className="div" to="#">
-                        <img alt="twitter" src=" https://img.icons8.com/fluency/48/undefined/patreon.png" />
-                        <p>Patreon</p>
-                    </Link>
-                   
-                
+                    {
+                        socialBrands.map((brand) => {
+                           return  <Link onClick={() => handleExplore(brand.title) ? close 
+                                    : setIsClosed(false)} className="div" to="#">
+                            <img alt={brand.title} src={brand.url} />
+                            <p>{brand.title}</p>
+                        </Link>
+                        })
+                    }    
 
                 </div>
-
        
-                    </ModalStyled>
+            </ModalStyled>
         </>
       );
 }

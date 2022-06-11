@@ -3,11 +3,9 @@ import { SidebarStyled } from "../styles/Sidebar.Styled";
 import { Link } from "react-router-dom";
 import { logout } from "../actions/userActions";
 import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux";
 
 const Sidebar = () => {
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
+
 
     const profilePicture = JSON.parse(localStorage.getItem("profilePicture"))
 

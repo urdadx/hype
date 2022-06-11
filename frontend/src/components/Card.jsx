@@ -13,10 +13,11 @@ import { useSelector } from "react-redux"
 import EllipsisText from "react-ellipsis-text";
 import { useParams } from "react-router-dom"
 import FormValidation from "../utils/FormValidation"
+import { withHttp } from "../utils/index.utils"
+import { API_URL } from "../utils/index.utils"
 
 const Card = ({ link, id }) => {
 
-    const API_URL = process.env.REACT_APP_API_URL
     const { username } = useParams()
 
     const [editTitle, setEditTitle] = useState(false);
@@ -29,6 +30,7 @@ const Card = ({ link, id }) => {
         setEditURL(!editURL);
     }
 
+    const userLink = withHttp(link.url);
 
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
@@ -36,7 +38,7 @@ const Card = ({ link, id }) => {
         const initialState = {
             _id: id,
             title: link.title,
-            url: link.url
+            url: userLink
         };  
 
         const config = {
@@ -119,6 +121,7 @@ const Card = ({ link, id }) => {
                                 </ToggleStyled>
                             </label>       
                         </Flex>
+
                         <Flex>
                             <div className="title_wrapper" style={{marginTop:"10px"}}>
                                 {
@@ -130,8 +133,10 @@ const Card = ({ link, id }) => {
                                             placeholder={'URL'} className="edit-link-input"/>
                                     
                                     </form> :
-                                    <a target="_blank" rel="noreferrer" href={link.url}>
-                                          <EllipsisText text={values.url} length={"25"} />
+                                    <a target="_blank" rel="noreferrer" href={userLink}>
+                                        <EllipsisText
+                                            text={values.url.length > 9 ? values.url : setEditURL(true)}
+                                            length={"25"} />
                                     </a>                      
                                 }
                                 <Link  onClick={toggleEditURL} className="edit" to="#">

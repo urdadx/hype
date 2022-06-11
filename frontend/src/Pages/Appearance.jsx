@@ -5,7 +5,7 @@ import ApprearanceComp from "../components/AppearanceComp";
 import Render from "../components/Render";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { checkUsername } from "../utils/checkUsername";
+import { checkUsername } from "../utils/index.utils";
 import NotFound from "./NotFound";
 
 

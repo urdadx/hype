@@ -9,12 +9,14 @@ import { TailSpin } from "react-loader-spinner";
 import { customStyles } from "../styles/ModalStyles";
 
 const WorkSpace = () => {
-  
+
     const [modalIsOpen, setIsOpen] = useState(false);
     const dispatch =  useDispatch()
 
     const postList = useSelector((state) => state.postList)
     const { loading, error, links } = postList  
+
+    console.log(links)
    
     useEffect(() => {
         dispatch(queryAllLinks())

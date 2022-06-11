@@ -1,7 +1,4 @@
 import { AppearanceStyled } from "../styles/AppeaStyled";
-import ThemeTwo from "../assets/Themes/t1.webp"
-import ThemeOne from "../assets/Themes/t2.webp"
-import ThemeThree from "../assets/Themes/t3.png"
 import { Button } from "../styles/WorkSpace.Styled";
 import { uploadTheme } from "../actions/postActions";
 import { useState } from "react"
@@ -9,8 +6,8 @@ import { useDispatch } from "react-redux";
 import { ToastContainer } from 'react-toastify';
 import { Icon } from '@iconify/react';
 import { chooseTheme } from "../actions/postActions";
-import { optionOne, optionThree, optionTwo } from "../assets/Themes/ThemeLinks";
 import { errorNotification, successNotification } from '../utils/Notifications';
+import { defaultThemes } from "../utils/index.utils";
 
 
 const ApprearanceComp = () => {
@@ -20,8 +17,6 @@ const ApprearanceComp = () => {
     const [file, setFile] = useState("")
     const [isFilePicked, setIsFilePicked] = useState(false);
     const [isApplied, setIsApplied] = useState(false);
-
-
 
     const changeHandler = (event) => {
 		setFile(event.target.files[0]);
@@ -102,48 +97,25 @@ const ApprearanceComp = () => {
                 <h3 className="title">Recommended</h3>
                 <div className="theme_wrapper">
                     <div className="theme-info">
-                        <div onClick={() => handleChoosing(optionOne)} className="div-image">                            
-                            <img className="image" src={ThemeOne} alt="theme-four" />
-                            <div className="overlay">
-                                <div className="free-wrapper">
-                                    <h5>Choose</h5> 
-                                    <ion-icon name="color-wand-outline"></ion-icon>
+                        {
+                            defaultThemes.map((theme) => {
+                                return <div onClick={() => handleChoosing(theme.url)} className="div-image">                            
+                                    <img className="image" src={theme.url} alt="theme-four" />
+                                    <div className="overlay">
+                                        <div className="free-wrapper">
+                                            <h5>Choose</h5> 
+                                            <ion-icon name="color-wand-outline"></ion-icon>
+                                        </div>
+                                        <h3 className="apply">
+                                            {
+                                                isApplied ? "Applied🎉" : "Click to apply!🎉"
+                                            }
+                                        </h3>
+                                    </div>
                                 </div>
-                                <h3 className="apply">
-                                    {
-                                        isApplied ? "Applied🎉" : "Click to apply!🎉"
-                                    }
-                                </h3>
-                            </div>
-                        </div>
-                        <div onClick={() => handleChoosing(optionTwo)} className="div-image">
-                            <img className="image"  src={ThemeTwo} alt="theme-two" />
-                            <div className="overlay">
-                                <div className="free-wrapper">
-                                    <h5>Choose </h5>
-                                    <ion-icon name="color-wand-outline"></ion-icon>
-                                </div>
-                                <h3 className="apply">
-                                {
-                                      isApplied ? "Applied🎉" : "Click to apply!🎉"
-                                }   
-                                </h3>
-                            </div>
-                        </div>
-                        <div onClick={() => handleChoosing(optionThree)}  className="div-image">
-                            <img className="image"  src={optionThree} alt="theme-three" />
-                            <div className="overlay">
-                                <div className="free-wrapper">
-                                    <h5>Choose</h5>
-                                    <ion-icon name="color-wand-outline"></ion-icon>
-                                </div>
-                                <h3 className="apply">
-                                    {
-                                        isApplied ? "Applied🎉" : "Click to apply!🎉"
-                                    }
-                                </h3>
-                            </div>
-                        </div>
+                            })
+                        }
+                       
                     </div>
                 </div>
 

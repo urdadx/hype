@@ -46,7 +46,7 @@ const ProfileComp  = () => {
     }
 
     const updateProfile = () => {
-        axios.patch(`${API_URL}/api/auth/profile`,values, config)
+        axios.patch(`${API_URL}/api/auth/profile`, values, config)
         .then((res)=> {
             console.log(res.data)
         })
@@ -163,7 +163,7 @@ const ProfileComp  = () => {
                 </div>
 
                 <div style={{height:"150px"}}></div>
-                
+
             </ProfileStyled>
            
 

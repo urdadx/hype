@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react"
 
 const Navbar = () => {
-
+    
     const { username } = useParams();
     const [userName, setName] = useState("")
 

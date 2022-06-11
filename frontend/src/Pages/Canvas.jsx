@@ -4,7 +4,7 @@ import Sidebar from "../components/Sidebar";
 import WorkSpace from "../components/WorkSpace";
 import Inputs from "../components/Inputs";
 import Render from "../components/Render";
-import { checkUsername } from "../utils/checkUsername";
+import { checkUsername } from "../utils/index.utils";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import NotFound from "./NotFound";

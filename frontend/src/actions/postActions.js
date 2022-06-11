@@ -23,8 +23,7 @@ import {
 } from "../constants/postConstants";
 
 import { logout } from './userActions'
-
-const DEV_PORT = process.env.REACT_APP_API_URL
+import { API_URL } from '../utils/index.utils';
 
 
 export const createLink = (title,url) => async (dispatch, getState) => {
@@ -44,7 +43,7 @@ export const createLink = (title,url) => async (dispatch, getState) => {
       }
   
       const { data } = await axios.post(
-        `${DEV_PORT}/api/link/new`, 
+        `${API_URL}/api/link/new`, 
         {title, url},
         config
       )
@@ -54,7 +53,6 @@ export const createLink = (title,url) => async (dispatch, getState) => {
         payload: data,
       })
 
-      console.log({data})
     } catch (error) {
       const message =
         error.response && error.response.data.message
@@ -90,7 +88,7 @@ export const queryAllLinks = () => async (
       }
   
       const { data } = await axios.get(
-        `${DEV_PORT}/api/link/all`,
+        `${API_URL}/api/link/all`,
           config,
          
       )
@@ -121,7 +119,7 @@ export const deleteLink = (id) => async (
 
       dispatch({ type: POST_DELETE_REQUEST })
       await axios.patch(
-        `${DEV_PORT}/api/link/${userInfo.username}/delete`,
+        `${API_URL}/api/link/${userInfo.username}/delete`,
           {_id :id}
          
       )
@@ -163,7 +161,7 @@ export const uploadTheme = (image) => async (
         }
   
       const { data } = await axios.patch(
-        `${DEV_PORT}/api/link/${userInfo.username}/theme`,
+        `${API_URL}/api/link/${userInfo.username}/theme`,
         image,
         config
          
@@ -202,7 +200,7 @@ export const uploadTheme = (image) => async (
       } = getState()
 
       const { data } = await axios.patch(
-        `${DEV_PORT}/api/link/${userInfo.username}/choose`,
+        `${API_URL}/api/link/${userInfo.username}/choose`,
         {option},
          
       )
@@ -246,7 +244,7 @@ export const uploadTheme = (image) => async (
         }
   
       const { data } = await axios.patch(
-        `${DEV_PORT}/api/auth/${userInfo.username}/upload`,
+        `${API_URL}/api/auth/${userInfo.username}/upload`,
         image,
         config
          

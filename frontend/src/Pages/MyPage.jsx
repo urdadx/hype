@@ -1,5 +1,5 @@
 import UserLinktree from "../components/UserLinktree";
-import { checkUsername } from "../utils/checkUsername";
+import { checkUsername } from "../utils/index.utils";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import NotFound from "./NotFound";
