@@ -24,7 +24,7 @@ import {
 
 import { logout } from './userActions'
 
-const DEV_PORT = "http://127.0.0.1:5000"
+const DEV_PORT = process.env.REACT_APP_API_URL
 
 
 export const createLink = (title,url) => async (dispatch, getState) => {

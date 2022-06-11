@@ -8,6 +8,7 @@ import {
   chooseTheme,
     createLink, 
     deleteLink, 
+    editLink, 
     uploadTheme, 
     userLinks
   } 
@@ -22,14 +23,12 @@ const multer = Multer({
 });
 
 
-
 router.patch('/:username/delete', deleteLink)
 router.patch('/:username/theme', multer.single("file"), uploadTheme)
 router.post('/new', protect, createLink)
 router.get('/all', protect, userLinks)
 router.patch('/:username/choose', chooseTheme)
-
-
+router.patch('/:username/editlink', editLink)
 
 
 export default router

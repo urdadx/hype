@@ -1,24 +1,33 @@
 import { NavbarStyled } from "../styles/Navbar.Styled";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import { getUserInfo } from "../utils/userDetails"
+import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react"
 
 const Navbar = () => {
+
+    const { username } = useParams();
+    const [userName, setName] = useState("")
+
     
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
+    useEffect(() => {
+        getUserInfo(username).then((data) => {
+            setName(data.username)
+           
+        }) 
+    })
 
     return ( 
         <>
         <NavbarStyled>
             <div>
-                <Link className="link" to={`/admin/${userInfo.username}`}>Links</Link>
+                <Link className="link" to={`/admin/${userName}`}>Links</Link>
             </div>
             <div>
-                <Link className="link" to={`/appearance/${userInfo.username}`}>Appearance</Link>
+                <Link className="link" to={`/appearance/${userName}`}>Appearance</Link>
             </div>
             <div>
-                <Link className="link" to={`/profile/${userInfo.username}`}>Settings</Link>
+                <Link className="link" to={`/profile/${userName}`}>Settings</Link>
             </div>
             <div>
                  <Link className="link" to="/analytics">Analytics</Link>

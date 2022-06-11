@@ -53,6 +53,36 @@ export const NotFoundStyled = styled.body`
         font-size:30px;
     }
 
+    .login-msg{
+        display: none;
+    }
+
+
+    @media only screen and (max-width: 180px){
+
+        .error-msg{
+            margin-top:65%;
+        }
+
+        .login-msg{
+            display: flex;
+            font-size:15px;
+        }
+
+        
+        h2{
+            font-size: 20px;
+        }
+
+        .wrapper{
+           display: none;
+        }
+
+        h3{
+            font-size:10px;
+        }
+    }
+
    
 
 `

@@ -1,6 +1,5 @@
 
 import { LinktreeStyled } from '../styles/LinktreeStyled';
-import { Link } from 'react-router-dom';
 import { TailSpin } from 'react-loader-spinner';
 import { useParams } from 'react-router-dom';
 import { getUserInfo } from '../utils/userDetails';
@@ -14,6 +13,7 @@ const UserLinktree = () => {
     const [loading, setIsLoading] = useState(true)
 
     const [userBio, setUserBio] = useState("")
+    
     const [userTheme, setUserTheme] = useState("")
     const [profilePicture, setUserProfilePic] = useState("")
 
@@ -40,17 +40,31 @@ const UserLinktree = () => {
         <>
         <LinktreeStyled>
             <section className="showcase">
-                <img className="bg-pic" src={loading ? theme : userTheme} alt="bg-profile" />
+                {
+                    loading ? 
+                    <div className="loader-one">
+                        <TailSpin color="white" width="50" /> 
+                    </div>
+                    :
+                    <img className="bg-pic" src={loading ? theme : userTheme} alt="bg-profile" />
+                }
                 <div className="overlay">
                     <div className="profile-info">
+                        {
+                            loading ? 
+                            <div className="loader-one">
+                                <TailSpin color="blue" width="50" /> 
+                            </div>
+                            :
                         <img className="profile-pic" src={loading ? pic : profilePicture} alt="profile-pic" />
+                        }
                         <p>@{username}</p>
                         <p>{userBio}</p>
                         <div className="links">
                             {
                                 !loading ? 
                                 links.map((link) => {
-                                    return <Link key={link._id} className="link" to={link.url}>{link.title}</Link> 
+                                    return <a key={link._id} target="_blank" rel="noreferrer" className="link" href={link.url}>{link.title}</a> 
 
                                 })
                                 
@@ -65,16 +79,15 @@ const UserLinktree = () => {
                             {
                                 !loading && links.length === 0 ?
                                 <div className="loader">
-                                    <p style={{color:"#fff"}}>You have no Links yet 😔</p>
+                                    <p style={{color:"#fff"}}>You have no Links yet</p>
                                 </div>
                                 :
                                 ""
                             }
 
-                            <div className='spacer'></div>
                         </div>
                     </div>
-                 
+                    <div className="spacer"></div>
                      <div className='trademark'> &copy; HyperX</div>
                 </div>
             </section>

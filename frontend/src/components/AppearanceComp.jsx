@@ -36,9 +36,6 @@ const ApprearanceComp = () => {
             dispatch(uploadTheme(image))
             successNotification("Theme added successfully")
             setIsFilePicked(false)
-            setTimeout(() => {
-                window.location.reload();
-            },3000) 
         }
         
         catch(error){
@@ -52,10 +49,6 @@ const ApprearanceComp = () => {
             dispatch(chooseTheme(option))
             successNotification("Theme applied successfully")
             setIsApplied(true)
-             
-            setTimeout(() => {
-                window.location.reload();
-            },3000)  
         }
         catch(error){
             errorNotification()

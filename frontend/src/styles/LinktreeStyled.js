@@ -14,7 +14,7 @@ export const LinktreeStyled = styled.section`
 
 .bg-pic {
   width: 100vw;
-  height:100vh;
+  height:100%;
   position: absolute;
   top: 0;
   left: 0;
@@ -23,12 +23,15 @@ export const LinktreeStyled = styled.section`
 
 .showcase .overlay {
     width: 100vw;
-    height:100vh;
+    height:100%;
+    background-size: cover;
+    background-repeat: repeat;
     /* background-color: rgba(0, 35, 82, 0.7); */
     position: absolute;
     top: 0;
     left: 0;
     z-index:999;
+    overflow: auto  ;
 }
 
 
@@ -41,14 +44,15 @@ export const LinktreeStyled = styled.section`
 .profile-info{
     display: block;
     justify-content: center;
-    margin-top:3rem;  
+    margin-top:1rem;  
     width:100%;
+    height:100%;
 
 }
 
 .profile-pic{
-    width:120px;
-    height:120px;
+    width:100px;
+    height:100px;
     border-radius: 1000px;
 }
 
@@ -56,8 +60,7 @@ export const LinktreeStyled = styled.section`
     display: flex;
     flex-direction: column;
     width:65%;
-    margin:auto;    
-    
+    margin:auto;   
 }
 
  .link{
@@ -82,6 +85,11 @@ export const LinktreeStyled = styled.section`
     margin-top:2rem;
     font-size:25px;
     font-weight: bold;
+    margin-bottom:2rem;
+}
+
+.spacer{
+    margin-top:10rem;
 }
 
 .loader{
@@ -89,7 +97,10 @@ export const LinktreeStyled = styled.section`
     justify-content: center;
 }
 
-
+.loader-one{
+    display: flex;
+    justify-content: center;
+}
 
 .link:hover{
     background-color: rgb(243, 225, 247);
@@ -114,12 +125,20 @@ export const LinktreeStyled = styled.section`
         margin-bottom: 12px;
         padding:8px;
         font-size: 10px;
-
     }
 
     .trademark{
         margin-top: 0.5rem;
         font-size:10px;
+    }
+
+    .showcase .overlay::-webkit-scrollbar {
+        background:transparent;
+        width:1px;
+    }
+
+    .spacer{
+        margin-top:2rem;
     }
 
 }

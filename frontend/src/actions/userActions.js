@@ -27,7 +27,7 @@ import {
 } from '../constants/userConstants'
 
 
-const DEV_PORT = "http://127.0.0.1:5000"
+const DEV_PORT = process.env.REACT_APP_API_URL
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -55,6 +55,8 @@ export const login = (email, password) => async (dispatch) => {
     localStorage.setItem('userInfo', JSON.stringify(data))
     localStorage.setItem("profilePicture", JSON.stringify(data.profilePicture))
     localStorage.setItem("theme", JSON.stringify(data.theme))
+    localStorage.setItem("username", JSON.stringify(data.username))
+
 
   } catch (error) {
     dispatch({
@@ -109,7 +111,7 @@ export const register = (username, email, password) => async (dispatch) => {
     localStorage.setItem('userInfo', JSON.stringify(data))
     localStorage.setItem("profilePicture", JSON.stringify(data.profilePicture))
     localStorage.setItem("theme", JSON.stringify(data.theme))
-
+    localStorage.setItem("username", JSON.stringify(data.username))
 
   } catch (error) {
     dispatch({
@@ -165,18 +167,21 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`${DEV_PORT}/api/auth/profile`, user, config)
+    const { data } = await axios.patch(`${DEV_PORT}/api/auth/profile`, user, config)
 
     dispatch({
       type: USER_UPDATE_PROFILE_SUCCESS,
       payload: data,
     })
+
     dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
     })
+
     localStorage.setItem('userInfo', JSON.stringify(data))
     localStorage.setItem("profilePicture", JSON.stringify(data.profilePicture))
+    localStorage.setItem("username", JSON.stringify(data.username))
 
   } catch (error) {
     const message =

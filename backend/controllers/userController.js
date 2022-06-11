@@ -90,19 +90,24 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
 
   if (user) {
-    user.username = req.body.username || user.username
-    user.email = req.body.email || user.email
+    if(req.body.username){
+      user.username = req.body.username || user.username
+    }
 
     if (req.body.password){
-      user.password = req.body.password``
+      user.password = req.body.password || user.password
+    }
+
+    if (req.body.bio){
+      user.bio = req.body.bio || user.bio
     }
 
     const updatedUser = await user.save()
 
     res.json({
       _id: updatedUser._id,
-      firstName: updatedUser.firstName,
-      lastName: updatedUser.lastName,
+      username: updatedUser.username,
+      bio: updatedUser.bio,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
       theme: user.theme,

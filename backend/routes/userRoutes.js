@@ -29,13 +29,7 @@ router.patch('/:username/upload', multer.single("file"), uploadProfile)
 router.get("/:username/verify", verifyUsername)
 router.get("/:username", getUserProfile)
 
-router
-  .route('/profile')
-  .put(protect, updateUserProfile)
-router
-  .route('/:id')
-  .delete(protect, admin, deleteUser)
-  .get(protect, admin, getUserById)
-  .put(protect, admin, updateUser)
+router.patch("/profile", protect, updateUserProfile)
+
 
 export default router

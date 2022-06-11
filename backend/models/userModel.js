@@ -37,7 +37,7 @@ const userSchema = new mongoose.Schema(
     },
     bio: {
       type: String,
-      default: "No bio yet"
+      default: ""
     },
     profilePicture:{
         type: String,

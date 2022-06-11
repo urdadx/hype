@@ -6,7 +6,13 @@ const NotFound = () => {
     return (  
         <>
         <NotFoundStyled>
-            <h2>404 <br></br> Page not found!   <br></br>    🤖</h2>
+            <div className="error-msg">
+                <h2>404 <br></br> Page not found!   <br></br>    🤖</h2>
+                <br></br>
+
+                <h2 className="login-msg">Please login again</h2>
+
+            </div>
             <div className="wrapper">
             <Link className="home" to="/login">
                 <Button className="btn">Go Home</Button>

@@ -1,24 +1,20 @@
 import { Nav } from "../styles/Render.Styled";
 import { Button } from "../styles/Render.Styled";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { PreviewStyled } from "../styles/Preview";
+import { PreviewStyled } from '../styles/Preview';
 
 const RenderComp = () => {
 
-    const userLogin = useSelector((state) => state.userLogin)
-    const { userInfo } = userLogin
+    const username = JSON.parse(localStorage.getItem("username"))
 
     return (  
         <>
             <Nav>
                     <div>
-                        {userInfo ? <span>My Hyper: </span > : "" }
-                        { userInfo ? 
-                        <Link className="linktree" target="_blank" to="/https:link">
-                          {`https://hype.me/${userInfo.username}`} 
-                        </Link>
-                        :  <Button>Login</Button>}
+                        <span>My Hyper: </span > 
+                        <a className="linktree" rel="noreferrer"  
+                            target="_blank" href={`http://localhost:3000/me/${username}`}>
+                          {`https://hype.me/${username}`} 
+                        </a>
                     </div>
                     <div>   
                         <Button>Share</Button>
@@ -27,7 +23,7 @@ const RenderComp = () => {
             
             <PreviewStyled>
                 <div className="phone-case">
-                    <iframe title="preview"  src={`http://localhost:3000/me/${userInfo.username}`} />
+                    <iframe title="preview"  src={`http://localhost:3000/me/${username}`} />
                 </div>
             </PreviewStyled>
             

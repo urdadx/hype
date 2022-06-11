@@ -60,7 +60,7 @@ export const CardStyled = styled.section`
         grid-template-rows: 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 0px;
-        height: 130px;
+        height: 115px;
         width:640px;
         background-color: #fff;
         margin-left: 5px;
@@ -79,7 +79,13 @@ export const CardStyled = styled.section`
         border-bottom-color: rgb(215, 220, 225);
         border-left-color: rgb(215, 220, 225);
         width: 27px;
-        height: 130px;
+        height: 115px;
+    }
+
+    .edit-link-input{
+        width:250px;
+        border-bottom: 1.5px solid rgb(124, 65, 255);
+        
     }
 
 
@@ -108,10 +114,9 @@ export const CardStyled = styled.section`
         background: none;
         box-sizing: border-box;
         color: rgb(61, 68, 75);
-        font-size: 14px;
+        font-size: 16px;
         line-height: 20px;
         letter-spacing: normal;
-        width:620px;
         background-color: #fff;
 
     }
@@ -126,6 +131,7 @@ export const CardStyled = styled.section`
     .title_wrapper{
         display: flex;
         width:100%;
+        align-items: center;
 
     }
 
@@ -140,7 +146,7 @@ export const CardStyled = styled.section`
     }
 
     .edit{
-        margin-left:20px;
+        margin-left:7px;
     }
    
 `

@@ -131,6 +131,33 @@ const chooseTheme = asyncHandler(async(req,res) => {
 )
 
 
+const editLink = asyncHandler(async(req,res) => {
+
+  const username = req.params.username;
+  const { _id } = req.body;
+  const queryUsername = '^' + username + '$';
+  
+  User.findOne({ "username": { '$regex': queryUsername, $options: 'i' } })
+    .select('-password -email')
+    .then(user => {
+  
+      user.links.forEach((link, index) => {
+        
+        if (link._id.toString() === _id.toString()) {
+          const url = req.body.url;
+          const title = req.body.title;
+  
+          user.links[index] = {"_id": _id, "url": url, "title": title}
+          user.save()
+            .then(user => res.json(user))
+            .catch(err => res.status(400).json('Error: ' + err));
+        }
+      });
+    })
+    .catch(err => res.status(400).json('Error: ' + err))
+})
+
+
 
 
 
@@ -142,5 +169,6 @@ export{
     userLinks,
     deleteLink,
     uploadTheme,
-    chooseTheme
+    chooseTheme,
+    editLink
 }

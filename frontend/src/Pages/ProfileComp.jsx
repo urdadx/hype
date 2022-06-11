@@ -7,21 +7,63 @@ import { uploadProfile } from "../actions/postActions";
 import EllipsisText from "react-ellipsis-text";
 import { errorNotification, successNotification } from '../utils/Notifications';
 import { useParams } from "react-router-dom";
+import FormValidation from "../utils/FormValidation";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import { getUserInfo } from "../utils/userDetails";
 
 const ProfileComp  = () => {
 
+    const API_URL = process.env.REACT_APP_API_URL
+
     const [file, setFile] = useState("")
-    const [isFilePicked, setIsFilePicked] = useState(false);
+    const [isFilePicked, setIsFilePicked] = useState(false)
     const { username } = useParams()
+    const [userBio, setUserBio] = useState("")
+    const [userName, setName] = useState("")
+    const [password, setPassword] = useState("")
+
+    const userLogin = useSelector((state) => state.userLogin)
+    const dispatch = useDispatch()
+    const { userInfo } = userLogin
+
+    getUserInfo(username).then((data) => {
+        setName(data.username)
+        setUserBio(data.bio)
+        setPassword(data.password)
+    })
+
+    const initialState = {
+        username: userName,    
+        bio: userBio,
+        password: password
+    };  
+
+    const config = {
+        headers: {
+            Authorization: `Bearer ${userInfo.token}`,
+        },
+    }
+
+    const updateProfile = () => {
+        axios.patch(`${API_URL}/api/auth/profile`,values, config)
+        .then((res)=> {
+            console.log(res.data)
+        })
+        .catch((error)=>{
+            console.log(error)
+        })
+        localStorage.setItem("username", JSON.stringify(values.username))
+    }
+
+    const {handleSubmit, handleChange, values} = FormValidation(initialState, updateProfile);
    
     const profilePicture = JSON.parse(localStorage.getItem("profilePicture"))
-
-    const dispatch = useDispatch()
 
     const changeHandler = (event) => {
 		setFile(event.target.files[0]);
 		setIsFilePicked(true);
-	};
+	}
 
     const handleUpload = () => {
         const image = new FormData();
@@ -47,8 +89,6 @@ const ProfileComp  = () => {
         <>
         <ToastContainer />
             <ProfileStyled>
-
-           
                 <h3 className="title">Profile</h3>
                 <div className="profile-wrapper">
                     <div className="profile-info">
@@ -76,15 +116,25 @@ const ProfileComp  = () => {
                           
                     </div>
                     <div className="input_wrapper">
-                        <input className="username"  
-                               type="text" placeholder={`@${username}`} 
-                        />
-                        <textarea 
-                            rows="4"
-                            cols="4"
-                            placeholder="Enter a bio description ( 75 character limit )">
-                            
-                        </textarea>
+                        <form onSubmit={handleSubmit}>
+                            <input className="username"  
+                                type="text" placeholder={`@${username}`} 
+                                value = {values.username}
+                                onChange = {handleChange}
+                                name="username" 
+                                onBlur={handleSubmit}
+                            />
+                            <textarea 
+                                rows="4"
+                                cols="4"
+                                name="bio"
+                                value={values.bio}
+                                onChange = {handleChange}
+                                maxLength="75"
+                                placeholder="Enter a bio description ( 75 characters limit )">
+                                
+                            </textarea>
+                        </form>
                     </div>
 
                 </div>
@@ -92,24 +142,28 @@ const ProfileComp  = () => {
                 <h3 className="title update">Change Password</h3>
                 <div className="profile-wrapper ">
                     <div className="input_wrapper">
-
-                        <input className="username second" type="text"
-                                placeholder="Old password"
+                        
+                        <input className="username second" type="password"
+                               placeholder="Old password"
                          />
 
-                          <input className="username third" type="text"
-                                placeholder="New password"
-                         />
+                          <input className="username third" type="password"
+                                 placeholder="New password"
+                                 value={values.password}
+                                 onChange ={handleChange}
+                                 name="password"
+                        />
 
                     </div>
 
                 </div>
 
                 <div className="button_wrapper">
-                    <Button width="150px">Save changes</Button>
+                    <Button onClick={handleSubmit} width="150px">Save changes</Button>
                 </div>
 
                 <div style={{height:"150px"}}></div>
+                
             </ProfileStyled>
            
 
