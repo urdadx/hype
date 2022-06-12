@@ -26,6 +26,7 @@ const Card = ({ link, id }) => {
     const toggleEditTitle = () => {
         setEditTitle(!editTitle);
     }
+
     const toggleEditURL = () => {
         setEditURL(!editURL);
     }
@@ -38,7 +39,8 @@ const Card = ({ link, id }) => {
         const initialState = {
             _id: id,
             title: link.title,
-            url: userLink
+            url: userLink,
+            visibility: link.visibility
         };  
 
         const config = {
@@ -56,11 +58,13 @@ const Card = ({ link, id }) => {
             if (editURL === true) {
               toggleEditURL();
             }
+          
           })
           .catch(err => {
             console.log(err);
         })
     }
+
 
     const {handleSubmit, handleChange, values} = FormValidation(initialState, editLink);
 
@@ -113,10 +117,12 @@ const Card = ({ link, id }) => {
                                 </Link>                            
                             </div>
                             <label> 
+                                
                                 <ToggleStyled>
                                     <Toggle
-                                        defaultChecked={true}
                                         icons={false}
+                                        name="toggle"
+                                        defaultChecked={values.visibility}
                                     />
                                 </ToggleStyled>
                             </label>       

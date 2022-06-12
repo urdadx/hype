@@ -6,7 +6,7 @@ import ModalComp from "./ModalComp";
 import { useSelector, useDispatch } from "react-redux"
 import { queryAllLinks } from "../actions/postActions";
 import { TailSpin } from "react-loader-spinner";
-import { customStyles } from "../styles/ModalStyles";
+import { SOCIAL_MEDIA_MODAL } from "../styles/ModalStyles";
 
 const WorkSpace = () => {
 
@@ -41,7 +41,7 @@ const WorkSpace = () => {
                     <Modal
                         isOpen={modalIsOpen}
                         onRequestClose={closeModal}
-                        style={customStyles}
+                        style={SOCIAL_MEDIA_MODAL}
                         contentLabel="Example Modal"
                         >
                         <ModalComp  close = {closeModal} />

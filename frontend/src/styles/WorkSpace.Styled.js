@@ -88,10 +88,11 @@ export const CardStyled = styled.section`
         
     }
 
+  
 
     ion-icon {
         font-size: 22px;
-        margin-top:55px;
+        margin-top:55px;        
         margin-left:3.5px;
         color:grey;
     }
@@ -177,6 +178,103 @@ export const ModalStyled = styled.section`
         font-family: "Inter", sans-serif;
         text-align: center;
         color: #0a0b0d;
+    }
+
+    .header_title_share{
+        font-weight:600;
+        font-size: 14px;
+        font-family: "Inter", sans-serif;
+        text-align: center;
+        color: #0a0b0d;
+    }
+
+    .is-copied{
+        background-color: #8be58b;
+        display: flex; 
+        align-items: center;
+        border-bottom:1px solid #eee;
+        margin-top:0.735rem;
+        width:100%;
+        height:55px;
+        cursor: pointer;
+        padding-left:10px;
+        border-radius:3px;
+        color:black
+
+    }
+
+    .is-copied:hover{
+        background-color: lightgreen;
+       
+    }
+
+    .copy-div{
+        display: flex; 
+        align-items: center;
+        border-bottom:1px solid #eee;
+        margin-top:0.735rem;
+        width:100%;
+        height:55px;
+        cursor: pointer;
+        padding-left:10px;
+        border-radius:3px;
+    }
+
+
+    .copy-div:hover{
+        background-color: #F5F6F8;
+        border-radius: 4px;
+    }
+
+    .qr-msg{
+        font-size: 14px;
+        color:#747475
+    }
+
+    .social-share{
+       width:300px;
+       margin: auto;
+    }
+
+    .img{
+        width:30px;
+        height:30px;
+    }
+
+    .social-div {
+        display: flex; 
+        align-items: center;
+        border-bottom:1px solid #eee;
+        margin-top:0.735rem;
+        width:100%;
+        height:55px;
+        text-decoration: none;
+        color:black;
+        cursor: pointer;
+        border-radius:3px;
+        padding-left:10px;
+    }
+
+    .social-div:hover{
+        background-color: #F5F6F8;
+        border-radius: 4px;
+    }
+
+    span{
+        width:200px;
+        margin: auto;
+        
+    }
+
+    ion-icon:first-child{
+        font-size: 25px;
+        color:blue;
+    }
+
+    .qr-code{
+        display: flex;
+        justify-content: center;
+        margin-top:1rem;
     }
 
     .header_title_wrapper{

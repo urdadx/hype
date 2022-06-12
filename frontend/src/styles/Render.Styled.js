@@ -43,8 +43,10 @@ export const Button = styled.button`
     background-color: transparent;
     border: 1px solid #d7dce1;
     padding: 6px 12px;
-    font-size: 14px;
-    padding:10  px;
+    font-size: 15px;
+    width:80px;
+    padding:10px;
+    margin-right:10px;
     color: #686d73;
     text-decoration: none;
     cursor: pointer;

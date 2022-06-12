@@ -146,8 +146,9 @@ const editLink = asyncHandler(async(req,res) => {
         if (link._id.toString() === _id.toString()) {
           const url = req.body.url;
           const title = req.body.title;
-  
-          user.links[index] = {"_id": _id, "url": url, "title": title}
+          const visibility = req.body.visibility;
+
+          user.links[index] = {"_id": _id, "url": url, "title": title,"visibility": visibility}
           user.save()
             .then(user => res.json(user))
             .catch(err => res.status(400).json('Error: ' + err));
@@ -158,17 +159,11 @@ const editLink = asyncHandler(async(req,res) => {
 })
 
 
-
-
-
-
-
-
 export{
     createLink,
     userLinks,
     deleteLink,
     uploadTheme,
     chooseTheme,
-    editLink
+    editLink,
 }

@@ -2,7 +2,7 @@ import { Nav } from "../styles/Render.Styled";
 import { Button } from "../styles/Render.Styled";
 import { PreviewStyled } from '../styles/Preview';
 
-const RenderComp = () => {
+const RenderComp = ({ open }) => {
 
     const username = JSON.parse(localStorage.getItem("username"))
 
@@ -17,7 +17,7 @@ const RenderComp = () => {
                         </a>
                     </div>
                     <div>   
-                        <Button>Share</Button>
+                        <Button onClick={open}>Share</Button>
                     </div>
             </Nav>
             
