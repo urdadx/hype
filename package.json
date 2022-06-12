@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
 
-    "build":"cd frontend && npm run build",
     "client": "npm start --prefix frontend",
     "start": "node backend/server",
     "server": "nodemon backend/server",
