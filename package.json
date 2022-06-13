@@ -1,7 +1,7 @@
 {
   "name": "hype",
   "version": "1.0.0",
-  "description": "",
+  "description": "Hypeeee",
   "main": "server.js",
   "scripts": {
     "start": "node backend/server",
