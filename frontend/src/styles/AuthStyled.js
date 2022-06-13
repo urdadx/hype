@@ -14,6 +14,8 @@ export const AuthStyled = styled.section`
     width:100%;
     padding: 20px 20px 20px 60px;
     margin-top:0.2rem;
+    display: block;
+    justify-content: center;
     
   }
 
@@ -24,6 +26,7 @@ export const AuthStyled = styled.section`
 
   .image-wrapper{
     width:100%;
+  
   }
 
   .logo-heading{

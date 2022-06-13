@@ -12,7 +12,7 @@ export const checkUsername = async(username) => {
 
 export const withHttp = (url) => !/^https?:\/\//i.test(url) ? `https://${ url ? url : ''}` : url;
 
-export const API_URL = process.env.REACT_APP_API_URL
+export const API_URL = "http://127.0.0.1:5000"
 
 export const socialBrands = [
     {
