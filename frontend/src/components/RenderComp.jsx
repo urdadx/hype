@@ -1,10 +1,12 @@
 import { Nav } from "../styles/Render.Styled";
 import { Button } from "../styles/Render.Styled";
 import { PreviewStyled } from '../styles/Preview';
+import { API_URL } from "../utils/index.utils";
 
 const RenderComp = ({ open }) => {
 
     const username = JSON.parse(localStorage.getItem("username"))
+
 
     return (  
         <>
@@ -12,8 +14,8 @@ const RenderComp = ({ open }) => {
                     <div>
                         <span>My Hyper: </span > 
                         <a className="linktree" rel="noreferrer"  
-                            target="_blank" href={`http://localhost:3000/me/${username}`}>
-                          {`https://hype.me/${username}`} 
+                            target="_blank" href={`${API_URL}/me/${username}`}>
+                          {`${API_URL}/${username}`} 
                         </a>
                     </div>
                     <div>   
@@ -23,7 +25,7 @@ const RenderComp = ({ open }) => {
             
             <PreviewStyled>
                 <div className="phone-case">
-                    <iframe title="preview"  src={`http://localhost:3000/me/${username}`} />
+                    <iframe title="preview"  src={`${API_URL}/me/${username}`} />
                 </div>
             </PreviewStyled>
             
