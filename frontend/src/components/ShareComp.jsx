@@ -6,14 +6,19 @@ import { useSelector } from "react-redux";
 
 const ShareComp = ({ close }) => {
 
+    const DEV_URL = process.env.REACT_APP_CLIENT_DEV_URL
+    const PROD_URL = "https://hyperme.herokuapp.com"
+
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
-    const CLIENT_URL =  process.env.REACT_APP_CLIENT_DEV_URL
+
+    const CLIENT_URL = process.env.NODE_ENV === "development" ? DEV_URL : PROD_URL
+
+    console.log(process.env.NODE_ENV)
 
     const [isCopied, setCopied] = useClipboard(`${CLIENT_URL}/me/${userInfo.username}`,
         { successDuration: 1200})
         
-
 
     return ( 
         <>

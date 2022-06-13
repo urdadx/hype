@@ -34,7 +34,6 @@ const ProfileComp  = () => {
     })
 
     const initialState = {
-        username: userName,    
         bio: userBio,
         password: password
     };  
@@ -53,7 +52,7 @@ const ProfileComp  = () => {
         .catch((error)=>{
             console.log(error)
         })
-        localStorage.setItem("username", JSON.stringify(values.username))
+        // localStorage.setItem("username", JSON.stringify(values.username))
     }
 
     const {handleSubmit, handleChange, values} = FormValidation(initialState, updateProfile);
@@ -114,15 +113,15 @@ const ProfileComp  = () => {
                                 </button>
                             }
                           
+                        
                     </div>
                     <div className="input_wrapper">
-                        <form onSubmit={handleSubmit}>
                             <input className="username"  
                                 type="text" placeholder={`@${username}`} 
-                                value = {values.username}
+                                value = {`@${username}`}
                                 onChange = {handleChange}
                                 name="username" 
-                                onBlur={handleSubmit}
+                                disabled = {true}
                             />
                             <textarea 
                                 rows="4"
@@ -131,10 +130,10 @@ const ProfileComp  = () => {
                                 value={values.bio}
                                 onChange = {handleChange}
                                 maxLength="75"
+                                onBlur={handleSubmit}
                                 placeholder="Enter a bio description ( 75 characters limit )">
                                 
                             </textarea>
-                        </form>
                     </div>
 
                 </div>

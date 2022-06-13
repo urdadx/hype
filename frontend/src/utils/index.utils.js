@@ -12,7 +12,9 @@ export const checkUsername = async(username) => {
 
 export const withHttp = (url) => !/^https?:\/\//i.test(url) ? `https://${ url ? url : ''}` : url;
 
-export const API_URL = "http://127.0.0.1:5000"
+const PROD_URL = "https://hyperme.herokuapp.com"
+
+export const API_URL = process.env.NODE_ENV === "development" ? process.env.REACT_APP_API_URL : PROD_URL
 
 export const socialBrands = [
     {

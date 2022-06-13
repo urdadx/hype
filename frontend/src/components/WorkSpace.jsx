@@ -21,7 +21,7 @@ const WorkSpace = () => {
     useEffect(() => {
         dispatch(queryAllLinks())
     },[])
-
+    
     const openModal = () => {
       setIsOpen(true);
     }
