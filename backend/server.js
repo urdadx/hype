@@ -5,7 +5,8 @@ import connectDB from './config/db.js'
 import userRoutes from './routes/userRoutes.js'
 import linkRoutes from "./routes/linkRoutes.js";
 import cors from "cors"
-import morgan from "morgan"
+import morgan from "morgan";
+import path from "path"
 
 dotenv.config()
 
