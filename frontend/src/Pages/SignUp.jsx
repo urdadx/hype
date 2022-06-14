@@ -53,12 +53,13 @@ const SignUp = () => {
                      </div>
 
                      {
-                        error && 
-                        <div className="error-wrapper"> 
-                            <span className="error">
-                                {error}
-                            </span>
-                        </div>
+                         error && 
+                            <div className="error-wrapper"> 
+                                <span className="error">
+                                    {error}
+                                </span>
+                            </div>
+
                     }
 
                     <form onSubmit={handleSubmit}>

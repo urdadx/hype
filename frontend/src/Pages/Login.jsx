@@ -56,11 +56,12 @@ const Login = () => {
 
                      {
                         error && 
-                        <div className="error-wrapper"> 
-                            <span className="error">
-                                {error}
-                            </span>
-                        </div>
+                            <div className="error-wrapper"> 
+                                <span className="error">
+                                    {error}
+                                </span>
+                            </div>
+
                     }
 
                     <form onSubmit={handleSubmit}>

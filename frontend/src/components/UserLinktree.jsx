@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getUserInfo } from '../utils/userDetails';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import Meta from './Meta';
 
 const UserLinktree = () => {
 
@@ -38,6 +39,7 @@ const UserLinktree = () => {
 
     return ( 
         <>
+        <Meta title={`@${username}`} />
         <LinktreeStyled>
             <section className="showcase">
                 {
