@@ -116,7 +116,7 @@ const SignUp = () => {
                     </div>
                 </div>
 
-                <div className="image-wrapper">
+                <div className="image-wrapper-sign">
                    <img
                         alt="sign-illus"
                         className="img-illustration"

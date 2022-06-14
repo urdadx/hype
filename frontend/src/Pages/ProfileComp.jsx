@@ -114,10 +114,6 @@ const ProfileComp  = () => {
                                         Upload
                                     </button>
                                 }
-                              
-                            
-                          
-                        
                     </div>
                     <div className="input_wrapper">
                             <input className="username"  

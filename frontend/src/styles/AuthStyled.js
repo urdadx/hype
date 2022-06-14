@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { LOGIN_LOGO_URL } from "../assets/images/imageUrl";
 export const AuthStyled = styled.section`
 
   display: grid; 
@@ -25,7 +25,7 @@ export const AuthStyled = styled.section`
   }
 
   .image-wrapper{
-    width:100%;
+
   
   }
 
@@ -149,18 +149,37 @@ export const AuthStyled = styled.section`
       padding-top: 1px;
   }
 
-
   .image-wrapper{
+    display: flex;
+    width:100vw;
+    max-width: 100%;
+    height:100vh;
+    border-left: 1px solid rgb(197, 192, 192);
+    background: url("https://cdn.dribbble.com/users/1626229/screenshots/5292676/talent_scouting_4x.jpg?compress=1&resize=1200x900&vertical=top")
+  }
+
+  .image-wrapper-sign{
+    display: flex;
+    width:100vw;
+    max-width: 100%;
+    height:100vh; 
     border-left: 1px solid rgb(197, 192, 192);
   }
 
-  .img-illustration{
-    
+  .image-wrapper-sign > img{
+    width: 100vw;
     height: 100vh;
+    object-fit: cover; 
+ }
+
+  .img-illustration{
+    object-fit: cover;
+
+    /* height: 100vh;
     width: fit-content;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover; */
   }
 
   .submit-btn{

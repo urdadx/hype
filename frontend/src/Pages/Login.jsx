@@ -68,11 +68,11 @@ const Login = () => {
                      <div className="input-fields">
                          <p>Email</p>
                          <input
-                          type="email"
-                          className="input-text"
-                          placeholder="Email" 
-                          value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                            type="email"
+                            className="input-text"
+                            placeholder="Email" 
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
                          <p>Password</p>
                         <input 
@@ -108,12 +108,6 @@ const Login = () => {
                 </div>
 
                 <div className="image-wrapper">
-                   <img
-                        alt="login-illus"
-                        className="img-illustration"
-                        src={LOGIN_LOGO_URL}
-                    
-                    />
                 </div>
 
         </AuthStyled>
