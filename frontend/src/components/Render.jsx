@@ -24,9 +24,9 @@ const Render  = () => {
                 style={SHARE_MODAL}
                 contentLabel="Example Modal"
                 >
-                <ShareComp  close = {closeModal} />
+                <ShareComp close = {closeModal} />
             </Modal>
-            <RenderComp open={openModal} />
+            <RenderComp open={openModal} /> 
 
         </>
      );

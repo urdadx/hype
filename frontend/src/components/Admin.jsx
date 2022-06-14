@@ -3,6 +3,7 @@ import Canvas from "../Pages/Canvas";
 const Admin = () => {
     return ( 
         <>
+               
              <Canvas />
         </>
      );

@@ -330,4 +330,48 @@ export const ModalStyled = styled.section`
         font-weight: 500;
     }
 
+    .form-container{
+        padding:20px;
+    }
+    .form-container > p{
+        text-align: initial;
+        font-family: "Inter",sans-serif;
+        font-size:16px;
+        margin-top:1px;
+    }
+
+    .form-container > input{
+        display: block;
+        position: relative;
+        border: 0px;
+        border-radius: 4px;
+        outline: 1px solid #616364;
+        width: 95%;
+        font-family: "Inter",sans-serif;
+        font-size: 16px;
+        margin-bottom: 1.2rem;
+        padding:15px;
+    }
+
+    .form-container > textarea{
+        display: block;
+        position: relative;
+        border: 0px;
+        border-radius: 4px;
+        outline: 1px solid #616364;
+        width: 95%;
+        resize: none;
+        font-family: "Inter",sans-serif;
+        font-size: 16px;
+        margin-bottom: 1.2rem;
+        padding:15px;
+
+    }
+
+    .btn-div{
+        display: flex;
+        justify-content: center;
+    }
+
+
 `

@@ -7,6 +7,7 @@ import { useState } from "react"
 import { useParams } from "react-router-dom";
 import NotFound from "./NotFound";
 import { checkUsername } from "../utils/index.utils";
+import Meta from "../components/Meta";
 
 
 const Profile  = () => {
@@ -22,9 +23,10 @@ const Profile  = () => {
 
     return (  
         <>
+            <Meta title="Hyper | Profile" />
             {
-                !loading && !notFound ? <NotFound />
-
+                !loading && !notFound ? <NotFound title="Page not found" status="404" icon="🤖"/>
+ 
                 :     
             <CanvaStyled>
                 <div className="sidebar_section">

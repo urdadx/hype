@@ -56,7 +56,7 @@ const UserLinktree = () => {
                                 <TailSpin color="blue" width="50" /> 
                             </div>
                             :
-                        <img className="profile-pic" src={loading ? pic : profilePicture} alt="profile-pic" />
+                            <img className="profile-pic" src={loading ? pic : profilePicture} alt="profile-pic" />
                         }
                         <p>@{username}</p>
                         <p>{userBio}</p>
@@ -64,7 +64,8 @@ const UserLinktree = () => {
                             {
                                 !loading ? 
                                 links.map((link) => {
-                                    return <a key={link._id} target="_blank" rel="noreferrer" className="link" href={link.url}>{link.title}</a> 
+                                    return <a key={link._id} target="_blank" rel="noreferrer" 
+                                                className="link" href={link.url}>{link.title}</a> 
 
                                 })
                                 

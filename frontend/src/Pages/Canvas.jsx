@@ -8,6 +8,7 @@ import { checkUsername } from "../utils/index.utils";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import NotFound from "./NotFound";
+import Meta from "../components/Meta";
 
 const Canvas = () => {
 
@@ -23,8 +24,9 @@ const Canvas = () => {
 
     return ( 
         <>
+        <Meta title="Hyper | Admin" />
         {
-            !loading && !notFound ? <NotFound />
+            !loading && !notFound ? <NotFound title="Page not found" status="404" icon="🤖"/>
             :
 
             <CanvaStyled>

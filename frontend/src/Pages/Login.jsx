@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthStyled } from '../styles/AuthStyled';
 import THUNDER from "../assets/images/thunder.png"
 import { Link } from "react-router-dom"
+import Meta from "../components/Meta";
 
 
 const Login = () => {
@@ -36,6 +37,8 @@ const Login = () => {
 
 
     return (  
+        <>
+        <Meta title="Hyper | Login" />
         <AuthStyled>
                 <div className="sign-up-wrapper">
                      <div className="logo-heading">
@@ -113,6 +116,7 @@ const Login = () => {
                 </div>
 
         </AuthStyled>
+    </>
     );
 }
  

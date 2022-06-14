@@ -1,23 +1,17 @@
 import { ModalStyled } from "../styles/WorkSpace.Styled";
 import { Link } from "react-router-dom";
-import {QRCodeCanvas} from 'qrcode.react';
+import { QRCodeCanvas } from 'qrcode.react';
 import useClipboard from "react-use-clipboard";
 import { useSelector } from "react-redux";
+import { CLIENT_URL } from "../utils/index.utils";
 
 const ShareComp = ({ close }) => {
-
-    const DEV_URL = process.env.REACT_APP_CLIENT_DEV_URL
-    const PROD_URL = "https://hyperme.herokuapp.com"
 
     const userLogin = useSelector((state) => state.userLogin)
     const { userInfo } = userLogin
 
-    const CLIENT_URL = process.env.NODE_ENV === "development" ? DEV_URL : PROD_URL
-
-    console.log(process.env.NODE_ENV)
-
     const [isCopied, setCopied] = useClipboard(`${CLIENT_URL}/me/${userInfo.username}`,
-        { successDuration: 1200})
+        { successDuration: 1000})
         
 
     return ( 

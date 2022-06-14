@@ -16,6 +16,8 @@ const PROD_URL = "https://hyperme.herokuapp.com"
 
 export const API_URL = process.env.NODE_ENV === "development" ? process.env.REACT_APP_API_URL : PROD_URL
 
+export const CLIENT_URL = process.env.NODE_ENV === "development" ?  process.env.REACT_APP_CLIENT_DEV_URL : PROD_URL
+
 export const socialBrands = [
     {
         title: "YouTube",

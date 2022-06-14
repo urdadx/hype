@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { checkUsername } from "../utils/index.utils";
 import NotFound from "./NotFound";
+import Meta from "../components/Meta";
 
 
 const Appearance  = () => {
@@ -23,8 +24,9 @@ const Appearance  = () => {
 
     return (  
         <>
+        <Meta title="Hyper | Appearance" />
         {
-            !loading && !notFound ? <NotFound />
+            !loading && !notFound ? <NotFound title="Page not found" status="404" icon="🤖"/>
             :
             
             <CanvaStyled>

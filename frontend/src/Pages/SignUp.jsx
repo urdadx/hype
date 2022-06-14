@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import THUNDER from "../assets/images/thunder.png"
 import PARTY_IMG from "../assets/images/party.jpg"
 import { Link } from 'react-router-dom';
+import Meta from '../components/Meta';
 
 const SignUp = () => {
 
@@ -35,6 +36,7 @@ const SignUp = () => {
 
     return ( 
         <>
+            <Meta title="Hyper | Sign Up" />
             <AuthStyled>
             <div className="sign-up-wrapper">
                      <div className="logo-heading">

@@ -20,7 +20,6 @@ const ProfileComp  = () => {
     const [isFilePicked, setIsFilePicked] = useState(false)
     const { username } = useParams()
     const [userBio, setUserBio] = useState("")
-    const [userName, setName] = useState("")
     const [password, setPassword] = useState("")
 
     const userLogin = useSelector((state) => state.userLogin)
@@ -28,7 +27,6 @@ const ProfileComp  = () => {
     const { userInfo } = userLogin
 
     getUserInfo(username).then((data) => {
-        setName(data.username)
         setUserBio(data.bio)
         setPassword(data.password)
     })
