@@ -62,6 +62,10 @@ const ProfileComp  = () => {
 		setIsFilePicked(true);
 	}
 
+    const alert = () => {
+        errorNotification("Please pick an image first")
+    }
+
     const handleUpload = () => {
         const image = new FormData();
         image.append("file", file)
@@ -100,10 +104,16 @@ const ProfileComp  = () => {
                                 </button>
                                 <input onChange={changeHandler} type="file" name="myfile" />
                             </div>
-                            
-                                <button  onClick={handleUpload}>
-                                    Upload 🚀 
-                                </button>
+                                {
+                                   !isFilePicked && 
+                                   <button onClick={alert}>Upload</button>
+                                }
+                                {
+                                    isFilePicked &&
+                                    <button disabled={!isFilePicked}  onClick={handleUpload}>
+                                        Upload
+                                    </button>
+                                }
                               
                             
                           
