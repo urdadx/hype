@@ -100,16 +100,12 @@ const ProfileComp  = () => {
                                 </button>
                                 <input onChange={changeHandler} type="file" name="myfile" />
                             </div>
-                            {
-                                isFilePicked ? 
+                            
                                 <button  onClick={handleUpload}>
                                     Upload 🚀 
                                 </button>
-                                :
-                                <button>
-                                    Remove
-                                </button>
-                            }
+                              
+                            
                           
                         
                     </div>
