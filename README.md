@@ -19,6 +19,13 @@ An alternative to Linktree but with added features and customizations all for fr
 **Server:** Node.js, Express, JWT, Firebase, MongoDB
 
 
+## Demo
+
+Live Demo: https://hyperme.herokuapp.com/
+
+Youtube Demo: https://youtu.be/rM-J7H-ToKg
+
+
 ## Screenshots
 
 ### Admin Screen
@@ -26,13 +33,6 @@ An alternative to Linktree but with added features and customizations all for fr
 
 ### Profile Screen
 ![Profile screen](https://firebasestorage.googleapis.com/v0/b/user-uploads-v1.appspot.com/o/hype%2Fscreenp.png?alt=media&token=d96b12bb-49c3-4e11-ae10-5adfd933dac4)
-
-
-## Demo
-
-Live Demo: https://hyperme.herokuapp.com/
-
-Youtube Demo: https://youtu.be/rM-J7H-ToKg
 
 
 ## Copyright
