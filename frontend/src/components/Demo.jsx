@@ -37,28 +37,28 @@ const Demo = ({ close }) => {
             <ModalStyled>
                 <div className="header">
                     <div className="header_title_wrapper">
-                        <h3 className="header_title">Recruiter Login 🕵️‍♂️ (Simply click to login)</h3>
+                        <h3 className="header_title">Recruiter Login 🕵️‍♂️ *Simply click to login*</h3>
                     </div>
                     <Link className="close-btn" to="#" onClick={close}>
                         <ion-icon size="large" name="close-outline"></ion-icon>
                     </Link>
-                </div>
-                <div className="form-container">
-                <p>Username</p>
-                <input placeholder="Username" value="demo" type="text"></input>
-                <p>Email</p>
-                <input placeholder="Email" value="demo@hired.com" type="text"></input>
-                <p>Password</p>
-                <input placeholder="Password" value="demo123" type="text"></input>
+                    </div>
+                        <div className="form-container">
+                        <p>Username</p>
+                        <input placeholder="Username" value="demo" type="text"></input>
+                        <p>Email</p>
+                        <input placeholder="Email" value="demo@hired.com" type="text"></input>
+                        <p>Password</p>
+                        <input placeholder="Password" value="demo123" type="text"></input>
 
-                <div className="btn-div">
-                    <Button onClick={handleDemoLogin} width="180px">
-                        {
-                            loading ? "Loading...Please wait" : "Demo Login"
-                        }
-                    </Button>
+                    <div className="btn-div">
+                        <Button onClick={handleDemoLogin} width="180px">
+                            {
+                                loading ? "Loading...Please wait" : "Demo Login"
+                            }
+                        </Button>
+                    </div>
                 </div>
-            </div>
 
             </ModalStyled>
         

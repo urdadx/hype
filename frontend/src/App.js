@@ -1,5 +1,5 @@
 import Admin from "./components/Admin";
-import {BrowserRouter as Router,Route,Routes} from "react-router-dom";
+import { BrowserRouter as Router,Route,Routes } from "react-router-dom";
 import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Profile from './Pages/Profile';
