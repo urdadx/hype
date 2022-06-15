@@ -1,7 +1,6 @@
 import { useState,useEffect } from "react";
 import { login } from '../actions/userActions'
 import { useDispatch, useSelector } from 'react-redux'
-import { LOGIN_LOGO_URL } from "../assets/images/imageUrl";
 import { useNavigate } from "react-router-dom";
 import { AuthStyled } from '../styles/AuthStyled';
 import THUNDER from "../assets/images/thunder.png"

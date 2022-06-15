@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const SidebarStyled = styled.div`
 
-    height: 100%;
+    height: 100vh;
     max-height: 100vh;
     position: fixed;
     display: inline-block;

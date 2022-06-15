@@ -8,21 +8,25 @@ import NotFound from "./Pages/NotFound";
 import MyPage from "./Pages/MyPage";
 import Analytics from "./Pages/Analytics";
 import Upgrade from "./Pages/Upgrade";
+import PrivateRoute from "./PrivateRoutes/PrivateRoute";
 
 const App = () => {
+
   return (
     <div className="App">
       <Router>
          <Routes>
-            <Route path="/admin/:username" element={<Admin />} />
             <Route path="/login" element={<Login />} />
             <Route path="/" element={<SignUp />} />
-            <Route path="/profile/:username" element={<Profile />} />
-            <Route path="/appearance/:username" element={<Appearance />} />
-            <Route path="/me/:username" element={<MyPage />} />
-            <Route path="/analytics" element={<Analytics />} />
-            <Route path="/upgrade" element={<Upgrade />} />
-            <Route path="*" element={<NotFound />} />
+            <Route element={<PrivateRoute />}>
+                <Route path="/admin/:username" element={<Admin />} />
+                <Route path="/profile/:username" element={<Profile />} />
+                <Route path="/appearance/:username" element={<Appearance />} />
+                <Route path="/me/:username" element={<MyPage />} />
+                <Route path="/analytics" element={<Analytics />} />
+                <Route path="/upgrade" element={<Upgrade />} />
+                <Route path="*" element={<NotFound title="404 Page not found"  icon="🤖" />} />
+            </Route>
          </Routes>
       </Router>
     </div>

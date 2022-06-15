@@ -44,7 +44,7 @@ const Canvas = () => {
             </CanvaStyled>
         }
         </>
-     );
+    );
 }
  
 export default Canvas;

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { LOGIN_LOGO_URL } from "../assets/images/imageUrl";
 export const AuthStyled = styled.section`
 
   display: grid; 
@@ -164,6 +163,7 @@ export const AuthStyled = styled.section`
     max-width: 100%;
     height:100vh; 
     border-left: 1px solid rgb(197, 192, 192);
+
   }
 
   .image-wrapper-sign > img{
@@ -174,12 +174,6 @@ export const AuthStyled = styled.section`
 
   .img-illustration{
     object-fit: cover;
-
-    /* height: 100vh;
-    width: fit-content;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover; */
   }
 
   .submit-btn{

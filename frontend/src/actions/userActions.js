@@ -56,6 +56,7 @@ export const login = (email, password) => async (dispatch) => {
     localStorage.setItem("profilePicture", JSON.stringify(data.profilePicture))
     localStorage.setItem("theme", JSON.stringify(data.theme))
     localStorage.setItem("username", JSON.stringify(data.username))
+    localStorage.setItem("token", JSON.stringify(data.token))
 
 
   } catch (error) {
@@ -70,9 +71,12 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const logout = () => (dispatch) => {
-  localStorage.removeItem('userInfo')
+  localStorage.removeItem("userInfo")
   localStorage.removeItem("theme")
   localStorage.removeItem("profilePicture")
+  localStorage.removeItem("username")
+  localStorage.removeItem("token")
+  localStorage.removeItem("userInfo")
   dispatch({ type: USER_LOGOUT })
   dispatch({ type: USER_DETAILS_RESET })
   dispatch({ type: USER_LIST_RESET })
@@ -112,6 +116,7 @@ export const register = (username, email, password) => async (dispatch) => {
     localStorage.setItem("profilePicture", JSON.stringify(data.profilePicture))
     localStorage.setItem("theme", JSON.stringify(data.theme))
     localStorage.setItem("username", JSON.stringify(data.username))
+    localStorage.setItem("token", JSON.stringify(data.token))
 
   } catch (error) {
     dispatch({
