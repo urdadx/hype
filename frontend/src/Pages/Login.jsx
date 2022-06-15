@@ -16,7 +16,6 @@ const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-  
     const userLogin = useSelector((state) => state.userLogin)
     const { loading, error, userInfo } = userLogin
   
@@ -34,6 +33,9 @@ const Login = () => {
     }
 
 
+    const handleDemoLogin = () => {
+        dispatch(login("demo@hired.com", "demo123"))
+    }
 
     return (  
         <>
@@ -50,8 +52,10 @@ const Login = () => {
 
                      <div className="login-alert">
                         <p>Log in</p>
-                        <small>Need a Hyper account? <Link to="/">Sign Up</Link></small>
+                        <small>Need a Hyper account? <Link to="/">Sign Up</Link></small> or  <small><Link onClick={handleDemoLogin} to="#">Demo Login</Link></small>
+                        
                      </div>
+                        
 
                      {
                         error && 

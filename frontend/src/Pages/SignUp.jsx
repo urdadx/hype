@@ -7,6 +7,9 @@ import THUNDER from "../assets/images/thunder.png"
 import PARTY_IMG from "../assets/images/party.jpg"
 import { Link } from 'react-router-dom';
 import Meta from '../components/Meta';
+import Modal from "react-modal";
+import Demo from '../components/Demo';
+import { ALERT_MODAL_ } from '../styles/ModalStyles';
 
 const SignUp = () => {
 
@@ -26,17 +29,38 @@ const SignUp = () => {
         if (userInfo) {
             navigate(`${redirect}/${userInfo.username}`)
         }
+
     }, [navigate, userInfo, redirect])
 
     const handleSubmit = (e) => {   
         e.preventDefault()
         dispatch(register(username, email, password))
         
-    }  
+    } 
+    
+    const [modalIsOpen, setIsOpen] = useState(false);
+
+    const openModal = () => {
+        setIsOpen(true);
+      }
+    
+      const closeModal = () => {
+        setIsOpen(false);
+    }
 
     return ( 
         <>
             <Meta title="Hyper | Sign Up" />
+
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={closeModal}
+                style={ALERT_MODAL_}
+                contentLabel="Example Modal"
+                >
+                <Demo close = {closeModal} />
+            </Modal>
+
             <AuthStyled>
             <div className="sign-up-wrapper">
                      <div className="logo-heading">
@@ -47,9 +71,15 @@ const SignUp = () => {
                          <span>hyper</span>
                      </div>
 
-                     <div className="login-alert">
+                    <div className="login-alert">
                         <p>Sign Up</p>
-                        <small>Already have an account? <a href="/login">Log In</a></small>
+                    <div className="demo">
+                        <p className="recruiter">
+                            <small>Recruiter 🕵️‍♂️? <Link onClick={openModal}  to="">Use a demo account</Link> </small>   
+                               
+                        </p>
+                    </div>
+                        <small>Already have an account? <Link to="/login">Log In</Link></small>
                      </div>
 
                      {
@@ -107,13 +137,7 @@ const SignUp = () => {
                      </div>
                      </form>
 
-                    <div className="footer">
-                        <hr></hr>
-                        <p className="forgot-alert">
-                            Forgot Password? <Link to="#" className="recover" href="">Recover Password</Link>
-                        </p>
-
-                    </div>
+                   
                 </div>
 
                 <div className="image-wrapper-sign">

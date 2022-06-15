@@ -23,15 +23,10 @@ export const AuthStyled = styled.section`
     background: transparent; /* make scrollbar transparent */
   }
 
-  .image-wrapper{
-
-  
-  }
 
   .logo-heading{
     display:flex;
     align-items: center;
-    margin-bottom:0px;
   }
   
   .logo-heading > span{
@@ -50,45 +45,14 @@ export const AuthStyled = styled.section`
     font-size:48px;
     font-weight:600;
     font-family: "Comic Sans";
-    margin-bottom:0.35rem;
+    margin-bottom:1rem;
 
   }
 
   .login-alert{
-    margin-bottom:0rem;
+    margin-top:1px;
   }
   
-  .google-btn{
-    max-height: 3rem;
-    padding-top:15px;
-    padding-bottom:30px;
-    color: #0e0e0e;
-    background-color: #fff;
-    border: 1px solid #000;
-    border-radius: 0.25rem;
-    font-weight: 600;
-    font-size: .875rem;
-    height: 2.5rem;
-    margin-bottom:1.5rem;
-    width: 380px;
-    cursor: pointer;
-  }
-
-  .google-signup{
-    width: 538px;
-  }
-
-  .google-btn  img{
-      width:25px;
-      height:25px;
-    
-  }
-
-  .btn-title{
-     margin-left:20px;
-     padding:0px auto;
-  }
-
   .input-fields{
     display:flex;
     flex-direction: column;
@@ -96,7 +60,6 @@ export const AuthStyled = styled.section`
   }
 
   .input-text{
-    margin-top:10px;
     margin-bottom:0.5rem;
     width: 350px;
     padding:17px;
@@ -120,32 +83,6 @@ export const AuthStyled = styled.section`
     color:#3380F1;
     font-weight:600;
 
-  }
-
-  .spacer{
-    width:380px;
-    display:flex;
-    align-items: center;
-
-  }
-
-  .spacer-large{
-    width:538px;
-  }
-
-  .spacer .line{
-      height: 1px;
-      flex: 1;
-      background-color: rgb(138, 134, 134)
-  }
-
- 
-
-  .spacer small{
-      padding: 0 1rem;
-      color: rgb(155, 150, 150);
-      font-size: 15px;
-      padding-top: 1px;
   }
 
   .image-wrapper{
