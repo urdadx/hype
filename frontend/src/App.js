@@ -9,11 +9,16 @@ import MyPage from "./Pages/MyPage";
 import Analytics from "./Pages/Analytics";
 import Upgrade from "./Pages/Upgrade";
 import PrivateRoute from "./PrivateRoutes/PrivateRoute";
+import { ThemeProvider } from "styled-components";
 
 const App = () => {
 
+  const theme = {
+    mobile:"768px"
+  }
+
   return (
-    <div className="App">
+    <ThemeProvider theme = {theme}>
       <Router>
          <Routes>
             <Route path="/login" element={<Login />} />
@@ -29,7 +34,7 @@ const App = () => {
             </Route>
          </Routes>
       </Router>
-    </div>
+    </ThemeProvider>
   );
 }
 

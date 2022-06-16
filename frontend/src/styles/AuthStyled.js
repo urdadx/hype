@@ -2,11 +2,12 @@ import styled from "styled-components";
 export const AuthStyled = styled.section`
 
   display: grid; 
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 0px;
   height: 100vh;
   overflow-x: hidden;
+  box-sizing: border-box;
 
 
   .sign-up-wrapper{
@@ -214,6 +215,45 @@ export const AuthStyled = styled.section`
     text-decoration: underline;
     font-weight:600;
     padding-left:2px;
+  }
+
+
+
+
+  @media (max-width: ${({ theme }) => theme.mobile}) {
+      display: grid; 
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+  
+
+     .image-wrapper-sign{
+       display: none;
+       height:0px;
+       width:0px;
+     }
+
+     .image-wrapper{
+       display: none;
+       height:0px;
+       width:0px;
+     }
+
+     .sign-up-wrapper{
+        display: block;
+        margin-top:5px;
+        width:600px;
+        margin:30px auto 5px auto;
+        padding:20px;
+     }
+
+     .input-text{
+       width:300px;
+     }
+
+     .submit-btn{
+       width:330px;
+     }
+
   }
 
 

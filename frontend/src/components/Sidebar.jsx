@@ -15,7 +15,7 @@ const Sidebar = () => {
 
     const openModal = () => {
         setIsOpen(true);
-      }
+    }
     
     const closeModal = () => {
         setIsOpen(false);
