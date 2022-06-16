@@ -1,3 +1,5 @@
+
+
 export const SOCIAL_MEDIA_MODAL = {
     content: {
       top: '45%',
@@ -51,7 +53,9 @@ export const ALERT_MODAL = {
   },
 };
 
+
 export const ALERT_MODAL_ = {
+
   content: {
     top: '45%',
     left: '50%',

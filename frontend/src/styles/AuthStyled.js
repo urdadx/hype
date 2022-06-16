@@ -220,6 +220,7 @@ export const AuthStyled = styled.section`
 
 
 
+
   @media (max-width: ${({ theme }) => theme.mobile}) {
       display: grid; 
       grid-template-rows: 1fr;
@@ -251,8 +252,17 @@ export const AuthStyled = styled.section`
      }
 
      .submit-btn{
-       width:330px;
+       width:335px;
      }
+
+     .error-wrapper{
+       width:310px;
+     }
+
+     .logo-heading > span{
+      font-weight:500;
+    }
+
 
   }
 
