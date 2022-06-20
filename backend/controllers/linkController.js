@@ -2,9 +2,7 @@ import asyncHandler from 'express-async-handler'
 import User from '../models/userModel.js';
 import uploadImageToStorage from '../utils/fileUpload.js';
 
-const ALL_ICONS_FOLDER = "hype/icons/"
 const ALL_THEMES_FOLDER = "hype/themes/"
-
 
 const createLink = asyncHandler(async (req, res) => {
     const { title, url } = req.body;

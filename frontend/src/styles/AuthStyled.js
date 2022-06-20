@@ -217,10 +217,6 @@ export const AuthStyled = styled.section`
     padding-left:2px;
   }
 
-
-
-
-
   @media (max-width: ${({ theme }) => theme.mobile}) {
       display: grid; 
       grid-template-rows: 1fr;

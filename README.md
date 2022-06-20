@@ -26,6 +26,25 @@ Live Demo: https://hyperme.herokuapp.com/
 Youtube Demo: https://youtu.be/rM-J7H-ToKg
 
 
+## Project Layout
+
+### Frontend
+- components
+- pages
+- styles
+- assets
+- redux (actions, reducers, constants)
+- utils
+
+### Backend
+- routes
+- controllers
+- utils
+- models
+- middlewares
+- config
+
+
 ## Screenshots
 
 ### Admin Screen

@@ -11,12 +11,11 @@ import { useEffect } from "react";
 const Demo = ({ close }) => {
 
     const [isClosed, setIsClosed] = useState(false)
-  
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const userLogin = useSelector((state) => state.userLogin)
-    const { loading, error, userInfo } = userLogin
+    const { loading, userInfo } = userLogin
   
     const redirect = window.location.search ? window.location.search.split('=')[1] : '/admin'
   
@@ -39,7 +38,7 @@ const Demo = ({ close }) => {
                     <div className="header_title_wrapper">
                         <h3 className="header_title">Recruiter Login 🕵️‍♂️ *Simply click to login*</h3>
                     </div>
-                    <Link className="close-btn" to="#" onClick={close}>
+                    <Link className="close-btn" to="#" onClick={!isClosed ? close : close}>
                         <ion-icon size="large" name="close-outline"></ion-icon>
                     </Link>
                     </div>
