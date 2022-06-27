@@ -8,7 +8,7 @@ const Render  = () => {
 
     const [modalIsOpen, setIsOpen] = useState(false);
 
-    const openModal = () => {
+    const openModal = () => {   
         setIsOpen(true);
       }
     

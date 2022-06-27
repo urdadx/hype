@@ -5,7 +5,7 @@ import { CLIENT_URL } from "../utils/index.utils";
 
 const RenderComp = ({ open }) => {
     
-    const username = JSON.parse(localStorage.getItem("username"))
+const username = JSON.parse(localStorage.getItem("username"))
 
     return (  
         <>

@@ -45,6 +45,41 @@ Youtube Demo: https://youtu.be/rM-J7H-ToKg
 - config
 
 
+#### Disclaimer: ENV variables
+- You need to create a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/lp/try2?utm_source=google&utm_campaign=gs_footprint_row_search_core_brand_atlas_desktop&utm_term=mongodb%20atlas&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=12212624584&adgroup=115749713503) account for database manipulation
+- You also need to create a [Firebase](https://firebase.google.com) & [Google Cloud](https://cloud.google.com) account for your service keys for storing user photos etc
+- Create a `.env` file to store all your env secrets
+
+### Installation
+
+Clone the repo
+
+```
+git clone https://github.com/WahabDev12/hype.git
+````
+Go into project directory
+
+```
+cd hype
+```
+
+Install packages and dependencies
+
+```
+// Do this in the root folder
+
+npm install
+```
+
+Run application
+
+```
+npm run dev
+```
+
+View app on [localhost://3000](localhost://3000)
+
+
 ## Screenshots
 
 ### Admin Screen
@@ -54,6 +89,6 @@ Youtube Demo: https://youtu.be/rM-J7H-ToKg
 ![Profile screen](https://firebasestorage.googleapis.com/v0/b/user-uploads-v1.appspot.com/o/hype%2Fscreenp.png?alt=media&token=d96b12bb-49c3-4e11-ae10-5adfd933dac4)
 
 
-## Copyright
+## &copy; Copyright
 
-&copy; Abdul-Wahab 
+Made with ❤️ by &copy; Abdul-Wahab 
