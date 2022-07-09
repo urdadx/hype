@@ -6,7 +6,7 @@ import { createLink  } from "../actions/postActions";
 import { socialBrands } from "../utils/index.utils";
 
 const ModalComp = ({ close }) => {
-
+    //eslint-disable-next-line
     const [isClosed, setIsClosed] = useState(false)
 
     const dispatch = useDispatch()
@@ -23,7 +23,7 @@ const ModalComp = ({ close }) => {
     return (
         <>  
             <ModalStyled>
-                <div className="header">
+                <div className="header">    
                     <div className="header_title_wrapper">
                         <h3 className="header_title">Add to hyper⚡</h3>
                     </div>
