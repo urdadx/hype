@@ -1,7 +1,7 @@
 
 # Hyper⚡️
 
-An alternative to Linktree but with added features and customizations all for free!
+An opensource alternative to Linktree but with added features and customizations all for free!
 
 
 [![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
