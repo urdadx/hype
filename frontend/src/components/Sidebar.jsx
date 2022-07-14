@@ -45,7 +45,7 @@ const Sidebar = () => {
         <SidebarStyled>
             <Link to="#">
                 <div className="logo">
-                    <img alt="logo" src="https://img.icons8.com/color/32/000000/linktree.png"/>
+                    <img alt="logo" src="https://img.icons8.com/arcade/40/000000/experimental-pizza-arcade.png"/>
                 </div>
             </Link>
             <div className="icons_wrapper">

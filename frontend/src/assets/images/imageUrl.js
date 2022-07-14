@@ -6,3 +6,4 @@ export const MACHINE_LEARNING_COMM = "https://img.icons8.com/external-flaticons-
 export const JOBS_URL = "https://images.jumpstart.me/frontend/communities/Cover+Photo/Web/jobs-card.png"
 export const NETWORK_URL = "https://images.jumpstart.me/frontend/communities/Cover+Photo/Web/companies-card.png" 
 export const COMPANIES_URL = "https://images.jumpstart.me/frontend/communities/Cover+Photo/Web/companies-card.png" 
+export const PIZZA_LOGO = "https://img.icons8.com/arcade/55/000000/experimental-pizza-arcade.png"
