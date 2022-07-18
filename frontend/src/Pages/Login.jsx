@@ -7,7 +7,6 @@ import THUNDER from "../assets/images/thunder.png"
 import { Link } from "react-router-dom"
 import Meta from "../components/Meta";
 
-
 const Login = () => {
 
     const [email, setEmail] = useState("")

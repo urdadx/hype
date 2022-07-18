@@ -5,6 +5,7 @@ import { successNotification } from "../utils/Notifications";
 
 const AlertComp = ({ close }) => {
 
+    //eslint-disable-next-line
     const [isClosed, setIsClosed] = useState(false)
 
     const handleSubmit = () => {

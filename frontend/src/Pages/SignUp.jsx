@@ -82,7 +82,7 @@ const SignUp = () => {
                         <small>Already have an account? <Link to="/login">Log In</Link></small>
                      </div>
 
-                     {
+                    {
                          error && 
                             <div className="error-wrapper"> 
                                 <span className="error">
